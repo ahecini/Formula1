@@ -1,3 +1,10 @@
 <resources>
-    <string name="app_name">Formula1</string>
+    <string name="app_name">Formula Wan</string>
+    <string name="Start">Start</string>
+    <string name="Quit">Quit</string>
+    <string name="Motor">Motor</string>
+    <string name="Brake">Brake</string>
+    <string name="Gear">Gear</string>
+    <string name="Suspension" translatable="false">Suspensions</string>
+    <string name="Validate">Validate</string>
 </resources>
