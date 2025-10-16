@@ -7,4 +7,6 @@
     <string name="Gear">Gear</string>
     <string name="Suspension" translatable="false">Suspensions</string>
     <string name="Validate">Validate</string>
+    <string name="illegal" translatable="false">illegal</string>
+    <string name="training">training</string>
 </resources>
