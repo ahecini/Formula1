@@ -9,4 +9,9 @@
     <string name="Validate">Validate</string>
     <string name="illegal" translatable="false">illegal</string>
     <string name="training">training</string>
+    <string name="Qualif">Qualifying</string>
+    <string name="Tires">Tires</string>
+    <string name="Fuel">Fuel</string>
+    <string name="Strategy">Strategy</string>
+    <string name="Consumption">Consumption</string>
 </resources>

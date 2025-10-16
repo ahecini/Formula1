@@ -8,4 +8,9 @@
     <string name="Gear">Boîte de vistesse</string>
     <string name="Validate">Valider</string>
     <string name="training">Entrainement</string>
+    <string name="Qualif">Essais</string>
+    <string name="Tires">Pneus</string>
+    <string name="Fuel">Carburant</string>
+    <string name="Strategy">Strategie</string>
+    <string name="Consumption">Consommation</string>
 </resources>
