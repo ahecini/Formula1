@@ -92,4 +92,20 @@
         tools:layout_editor_absoluteX="42dp"
         tools:layout_editor_absoluteY="470dp" />
 
+    <Button
+        android:id="@+id/button10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Validate"
+        tools:layout_editor_absoluteX="78dp"
+        tools:layout_editor_absoluteY="610dp" />
+
+    <Button
+        android:id="@+id/button11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Quit"
+        tools:layout_editor_absoluteX="231dp"
+        tools:layout_editor_absoluteY="610dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
