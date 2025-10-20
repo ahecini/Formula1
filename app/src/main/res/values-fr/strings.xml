@@ -13,4 +13,5 @@
     <string name="Fuel">Carburant</string>
     <string name="Strategy">Strategie</string>
     <string name="Consumption">Consommation</string>
+    <string name="Car">Voiture</string>
 </resources>

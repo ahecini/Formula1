@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Formula1">
         <activity
+            android:name=".VoitureRecap"
+            android:exported="false" />
+        <activity
+            android:name=".Voiture"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
