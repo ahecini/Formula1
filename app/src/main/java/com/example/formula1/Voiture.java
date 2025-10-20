@@ -15,6 +15,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.Random;
+
 public class Voiture extends AppCompatActivity {
 
     @Override
@@ -29,18 +31,18 @@ public class Voiture extends AppCompatActivity {
         TextView textViewMotor = findViewById(R.id.textViewMotor);
         TextView textViewSuspension = findViewById(R.id.textViewSuspension);
 
-        Spinner spinnerBrake = findViewById(R.id.spinnerBrake);
-        Spinner spinnerGear = findViewById(R.id.spinnerGear);
-        Spinner spinnerMotor = findViewById(R.id.spinnerMotor);
-        Spinner spinnerSuspension = findViewById(R.id.spinnerSuspension);
+        spinnerBrake = findViewById(R.id.spinnerBrake);
+        spinnerGear = findViewById(R.id.spinnerGear);
+        spinnerMotor = findViewById(R.id.spinnerMotor);
+        spinnerSuspension = findViewById(R.id.spinnerSuspension);
 
-        Button validate = findViewById(R.id.buttonValidate);
-        Button quit = findViewById(R.id.buttonQuit);
+        validate = findViewById(R.id.buttonValidate);
+        quit = findViewById(R.id.buttonQuit);
 
-        Switch switchLegalBrake = findViewById(R.id.switchLegalBrake);
-        Switch switchLegalGear = findViewById(R.id.switchLegalGear);
-        Switch switchLegalMotor = findViewById(R.id.switchLegalMotor);
-        Switch switchLegalSuspension = findViewById(R.id.switchLegalSuspension);
+        switchLegalBrake = findViewById(R.id.switchLegalBrake);
+        switchLegalGear = findViewById(R.id.switchLegalGear);
+        switchLegalMotor = findViewById(R.id.switchLegalMotor);
+        switchLegalSuspension = findViewById(R.id.switchLegalSuspension);
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -69,18 +71,47 @@ public class Voiture extends AppCompatActivity {
     public void validate(View view) {
         Intent intent = new Intent(this, VoitureRecap.class);
 
-        int Brake = spinnerBrake.getSelectedItemPosition();
-        int Gear = spinnerGear.getSelectedItemPosition();
-        int Motor = spinnerMotor.getSelectedItemPosition();
-        int Suspension = spinnerSuspension.getSelectedItemPosition();
+        int brake = Integer.parseInt(spinnerBrake.getSelectedItem().toString());
+        int gear = Integer.parseInt(spinnerGear.getSelectedItem().toString());
+        int motor = Integer.parseInt(spinnerMotor.getSelectedItem().toString());
+        int suspension = Integer.parseInt(spinnerSuspension.getSelectedItem().toString());
 
-        intent.putExtra("Brake", Brake);
-        intent.putExtra("Gear", Gear);
-        intent.putExtra("Motor", Motor);
-        intent.putExtra("Suspension", Suspension);
+        brake = variation(brake);
+        gear = variation(gear);
+        motor = variation(motor);
+        suspension = variation(suspension);
 
+        if (switchLegalBrake.isChecked()){
+            brake += 1;
+        }
+        if (switchLegalGear.isChecked()){
+            gear += 1;
+        }
+        if (switchLegalMotor.isChecked()){
+            motor += 1;
+        }
+        if (switchLegalSuspension.isChecked()){
+            suspension += 1;
+        }
+
+        intent.putExtra("Brake", brake);
+        intent.putExtra("Gear", gear);
+        intent.putExtra("Motor", motor);
+        intent.putExtra("Suspension", suspension);
 
         startActivity(intent);
+    }
+
+    private int variation (int value){
+        Random random = new Random();
+
+        value = value + random.nextInt(3) - 1;
+
+        if(value == 0){
+            value = 1;
+        }
+
+        return value;
     }
 
 }

@@ -117,6 +117,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
+        android:onClick="close"
         android:text="@string/Quit"
         app:layout_constraintBottom_toBottomOf="@+id/buttonRecapValidate"
         app:layout_constraintStart_toEndOf="@+id/buttonRecapValidate"
