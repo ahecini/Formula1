@@ -1,5 +1,6 @@
 package com.example.formula1;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -54,6 +55,11 @@ public class VoitureRecap extends AppCompatActivity {
 
     public void close (View view){
         finish();
+    }
+
+    public void validate (View view){
+        Intent intent = new Intent(this, Essais.class);
+        startActivity(intent);
     }
 
 

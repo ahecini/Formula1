@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Formula1">
         <activity
+            android:name=".Essais"
+            android:exported="false" />
+        <activity
             android:name=".VoitureRecap"
             android:exported="false" />
         <activity
