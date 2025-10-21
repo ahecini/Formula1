@@ -5,15 +5,207 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:foregroundTint="#180F0F"
+    android:foregroundTintMode="add"
     tools:context=".MainActivity">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/textView"
+        android:layout_width="144dp"
+        android:layout_height="57dp"
+        android:layout_marginStart="165dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="165dp"
+        android:fontFamily="@font/racing_sans_one"
+        android:foregroundTint="#FDFBFB"
+        android:text="Draft"
+        android:textColor="#DC0C0C"
+        android:textSize="48sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.349"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="20dp"
+        android:ems="10"
+        android:fontFamily="@font/racing_sans_one"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:text="Name"
+        android:textColor="#F4031B"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="48dp"
+        android:fontFamily="@font/racing_sans_one"
+        android:text="Réactivité"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+    <Spinner
+        android:id="@+id/spinner4"
+        android:layout_width="134dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="34dp"
+        android:layout_marginEnd="24dp"
+        android:entries="@array/skillsLevel"
+        android:scrollbarSize="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner3" />
+
+    <Spinner
+        android:id="@+id/spinner2"
+        android:layout_width="134dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="24dp"
+        android:entries="@array/skillsLevel"
+        android:scrollbarSize="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="37dp"
+        android:layout_marginTop="164dp"
+        android:layout_marginEnd="24dp"
+        android:fontFamily="@font/racing_sans_one"
+        android:text="Nom"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@+id/editTextText"
+        app:layout_constraintHorizontal_bias="0.909"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/spinner3"
+        android:layout_width="134dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="34dp"
+        android:layout_marginEnd="24dp"
+        android:entries="@array/skillsLevel"
+        android:scrollbarSize="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner2" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="134dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="45dp"
+        android:layout_marginEnd="24dp"
+        android:entries="@array/skillsLevel"
+        android:scrollbarSize="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextText" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="44dp"
+        android:fontFamily="@font/racing_sans_one"
+        android:text="Adaptabilité"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="72dp"
+        android:fontFamily="@font/racing_sans_one"
+        android:text="Virage"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@+id/spinner"
+        app:layout_constraintHorizontal_bias="0.328"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="60dp"
+        android:fontFamily="@font/racing_sans_one"
+        android:text="Contrôle"
+        android:textColorLink="#ED1010"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@+id/spinner4"
+        app:layout_constraintHorizontal_bias="0.44"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="52dp"
+        android:layout_marginBottom="68dp"
+        android:backgroundTint="#44FB1B"
+        android:fontFamily="@font/racing_sans_one"
+        android:text="Valider"
+        android:textColor="#140D0D"
+        android:textColorLink="#2DE615"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="59dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="68dp"
+        android:backgroundTint="#E20E0E"
+        android:fontFamily="@font/racing_sans_one"
+        android:text="Annuler"
+        android:textColor="#070707"
+        android:textColorLink="#E61D1D"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button"
+        app:layout_constraintHorizontal_bias="0.846"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="110dp"
+        android:layout_height="76dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/f1_2018_logo_removebg_preview" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="110dp"
+        android:layout_height="76dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="48dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/f1_2018_logo_removebg_preview" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
