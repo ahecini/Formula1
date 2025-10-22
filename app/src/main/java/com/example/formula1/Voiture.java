@@ -1,117 +1,107 @@
 package com.example.formula1;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.Spinner;
-import android.widget.Switch;
-import android.widget.TextView;
+import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.ForeignKey;
+import androidx.room.PrimaryKey;
 
-import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+@Entity(tableName = "voiture",
+foreignKeys = {
+        @ForeignKey(entity = Moteur.class,
+                parentColumns = "id",
+                childColumns = "moteur_id"),
+        @ForeignKey(entity = Frein.class,
+                parentColumns = "id",
+                childColumns = "frein_id"),
+        @ForeignKey(entity = Boite.class,
+                parentColumns = "id",
+                childColumns = "boite_id"),
+        @ForeignKey(entity = Suspension.class,
+                parentColumns = "id",
+                childColumns = "suspension_id")
+    }
+)
+public class Voiture {
+    @PrimaryKey(autoGenerate = true)
+    private int id;
 
-import java.util.Random;
+    @ColumnInfo(name = "moteur_id", index = true)
+    private int moteurId;
 
-public class Voiture extends AppCompatActivity {
+    @ColumnInfo(name = "frein_id", index = true)
+    private int freinId;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_voiture);
+    @ColumnInfo(name = "boite_id", index = true)
+    private int boiteId;
 
-        TextView textViewCar = findViewById(R.id.textViewCar);
-        TextView textViewBrake = findViewById(R.id.textViewBrake);
-        TextView textViewGear = findViewById(R.id.textViewGear);
-        TextView textViewMotor = findViewById(R.id.textViewMotor);
-        TextView textViewSuspension = findViewById(R.id.textViewSuspension);
+    @ColumnInfo(name = "suspension_id", index = true)
+    private int suspensionId;
 
-        spinnerBrake = findViewById(R.id.spinnerBrake);
-        spinnerGear = findViewById(R.id.spinnerGear);
-        spinnerMotor = findViewById(R.id.spinnerMotor);
-        spinnerSuspension = findViewById(R.id.spinnerSuspension);
+    @ColumnInfo(name = "carburant")
+    private int carburant;
 
-        validate = findViewById(R.id.buttonValidate);
-        quit = findViewById(R.id.buttonQuit);
+    @ColumnInfo(name = "pneu")
+    private String pneu;
 
-        switchLegalBrake = findViewById(R.id.switchLegalBrake);
-        switchLegalGear = findViewById(R.id.switchLegalGear);
-        switchLegalMotor = findViewById(R.id.switchLegalMotor);
-        switchLegalSuspension = findViewById(R.id.switchLegalSuspension);
-
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+    public Voiture(int moteurId, int freinId, int boiteId, int suspensionId){
+        this.moteurId = moteurId;
+        this.freinId = freinId;
+        this.boiteId = boiteId;
+        this.suspensionId = suspensionId;
+        this.carburant = 100;
+        this.pneu = "Medium";
     }
 
-    private Spinner spinnerBrake;
-    private Spinner spinnerGear;
-    private Spinner spinnerMotor;
-    private Spinner spinnerSuspension;
-
-    private Button validate;
-    private Button quit;
-
-    private Switch switchLegalBrake;
-    private Switch switchLegalGear;
-    private Switch switchLegalMotor;
-    private Switch switchLegalSuspension;
-
-    public void close(View view){
-        finish();
+    public int getId() {
+        return id;
     }
 
-    public void validate(View view) {
-        Intent intent = new Intent(this, VoitureRecap.class);
-
-        int brake = Integer.parseInt(spinnerBrake.getSelectedItem().toString());
-        int gear = Integer.parseInt(spinnerGear.getSelectedItem().toString());
-        int motor = Integer.parseInt(spinnerMotor.getSelectedItem().toString());
-        int suspension = Integer.parseInt(spinnerSuspension.getSelectedItem().toString());
-
-        brake = variation(brake);
-        gear = variation(gear);
-        motor = variation(motor);
-        suspension = variation(suspension);
-
-        if (switchLegalBrake.isChecked()){
-            brake += 1;
-        }
-        if (switchLegalGear.isChecked()){
-            gear += 1;
-        }
-        if (switchLegalMotor.isChecked()){
-            motor += 1;
-        }
-        if (switchLegalSuspension.isChecked()){
-            suspension += 1;
-        }
-
-        intent.putExtra("Brake", brake);
-        intent.putExtra("Gear", gear);
-        intent.putExtra("Motor", motor);
-        intent.putExtra("Suspension", suspension);
-
-        startActivity(intent);
+    public int getMoteurId() {
+        return moteurId;
     }
 
-    private int variation (int value){
-        Random random = new Random();
-
-        value = value + random.nextInt(3) - 1;
-
-        if(value == 0){
-            value = 1;
-        }
-
-        return value;
+    public void setMoteurId(int moteurId) {
+        this.moteurId = moteurId;
     }
 
+    public int getFreinId() {
+        return freinId;
+    }
+
+    public void setFreinId(int freinId) {
+        this.freinId = freinId;
+    }
+
+    public int getBoiteId() {
+        return boiteId;
+    }
+
+    public void setBoiteId(int boiteId) {
+        this.boiteId = boiteId;
+    }
+
+    public int getSuspensionId() {
+        return suspensionId;
+    }
+
+    public void setSuspensionId(int suspensionId) {
+        this.suspensionId = suspensionId;
+    }
+
+    public int getCarburant() {
+        return carburant;
+    }
+
+    public void setCarburant(int carburant) {
+        this.carburant = carburant;
+    }
+
+    public String getPneu() {
+        return pneu;
+    }
+
+    public void setPneu(String pneu) {
+        this.pneu = pneu;
+    }
 }
