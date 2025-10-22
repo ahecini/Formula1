@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".VoitureRecap">
+
+    <TextView
+        android:id="@+id/textViewVoitureRecap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="92dp"
+        android:text="@string/Car"
+        app:layout_constraintBottom_toTopOf="@+id/textViewRecapBrake"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewRecapBrake"
+        android:layout_width="137dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginBottom="44dp"
+        android:text="@string/Brake"
+        app:layout_constraintBottom_toTopOf="@+id/textViewRecapGear"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/MotorAttribute"
+        android:layout_width="70dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="52dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewRecapMotor"
+        app:layout_constraintStart_toEndOf="@+id/textViewRecapMotor"
+        app:layout_constraintTop_toTopOf="@+id/textViewRecapMotor"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/GearAttribute"
+        android:layout_width="70dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="52dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewRecapGear"
+        app:layout_constraintStart_toEndOf="@+id/textViewRecapGear"
+        app:layout_constraintTop_toTopOf="@+id/textViewRecapGear"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/SuspensionAttribute"
+        android:layout_width="70dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="52dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewRecapSuspension"
+        app:layout_constraintStart_toEndOf="@+id/textViewRecapSuspension"
+        app:layout_constraintTop_toTopOf="@+id/textViewRecapSuspension"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/BrakeAttribute"
+        android:layout_width="70dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="52dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewRecapBrake"
+        app:layout_constraintStart_toEndOf="@+id/textViewRecapBrake"
+        app:layout_constraintTop_toTopOf="@+id/textViewRecapBrake"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textViewRecapSuspension"
+        android:layout_width="137dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginBottom="44dp"
+        android:text="@string/Suspension"
+        app:layout_constraintBottom_toTopOf="@+id/buttonRecapValidate"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewRecapGear"
+        android:layout_width="137dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginBottom="44dp"
+        android:text="@string/Gear"
+        app:layout_constraintBottom_toTopOf="@+id/textViewRecapMotor"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewRecapMotor"
+        android:layout_width="137dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginBottom="44dp"
+        android:text="@string/Motor"
+        app:layout_constraintBottom_toTopOf="@+id/textViewRecapSuspension"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/buttonRecapValidate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="84dp"
+        android:layout_marginBottom="88dp"
+        android:text="@string/Validate"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/buttonRecapQuit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:onClick="close"
+        android:text="@string/Quit"
+        app:layout_constraintBottom_toBottomOf="@+id/buttonRecapValidate"
+        app:layout_constraintStart_toEndOf="@+id/buttonRecapValidate"
+        app:layout_constraintTop_toTopOf="@+id/buttonRecapValidate"
+        app:layout_constraintVertical_bias="0.0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

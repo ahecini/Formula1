@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Formula1</string>
-    <string name="draft">Recrutement</string>
+    <string name="app_name">Formula Wan</string>
+    <string name="Start">Commencer</string>
+    <string name="Quit">Quitter</string>
+    <string name="Motor">Moteur</string>
+    <string name="Brake">Frein</string>
+    <string name="Gear">Boîte de vistesse</string>
+    <string name="Validate">Valider</string>
+    <string name="training">Entrainement</string>
+    <string name="Qualif">Essais</string>
+    <string name="Tires">Pneus</string>
+    <string name="Fuel">Carburant</string>
+    <string name="Strategy">Strategie</string>
+    <string name="Consumption">Consommation</string>
+    <string name="Car">Voiture</string>
 </resources>

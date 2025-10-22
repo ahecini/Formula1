@@ -1,4 +1,19 @@
 <resources>
-    <string name="app_name">Formula1</string>
-    <string name="draft">Draft</string>
+    <string name="app_name">Formula Wan</string>
+    <string name="Start">Start</string>
+    <string name="Quit">Quit</string>
+    <string name="Motor">Motor</string>
+    <string name="Brake">Brake</string>
+    <string name="Gear">Gear</string>
+    <string name="Suspension" translatable="false">Suspensions</string>
+    <string name="Validate">Validate</string>
+    <string name="training">training</string>
+    <string name="Qualif">Qualifying</string>
+    <string name="Tires">Tires</string>
+    <string name="Fuel">Fuel</string>
+    <string name="Strategy">Strategy</string>
+    <string name="Consumption">Consumption</string>
+    <string name="Car">Car</string>
+    <string name="Legal" translatable="false">Legal</string>
+    <string name="Illegal" translatable="false">Illegal</string>
 </resources>
