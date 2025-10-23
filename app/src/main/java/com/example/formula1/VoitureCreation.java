@@ -93,10 +93,17 @@ public class VoitureCreation extends AppCompatActivity {
             suspension += 1;
         }
 
-        intent.putExtra("Brake", brake);
-        intent.putExtra("Gear", gear);
-        intent.putExtra("Motor", motor);
-        intent.putExtra("Suspension", suspension);
+        intent.putExtra("BrakeValue", brake);
+        intent.putExtra("BrakeIsIllegal", switchLegalBrake.isChecked());
+
+        intent.putExtra("GearValue", gear);
+        intent.putExtra("GearIsIllegal", switchLegalGear.isChecked());
+
+        intent.putExtra("MotorValue", motor);
+        intent.putExtra("MotorIsIllegal", switchLegalMotor.isChecked());
+
+        intent.putExtra("SuspensionValue", suspension);
+        intent.putExtra("SuspensionIsIllegal", switchLegalSuspension.isChecked());
 
         startActivity(intent);
     }

@@ -11,7 +11,24 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.concurrent.Executors;
+
 public class VoitureRecap extends AppCompatActivity {
+
+
+    private int brakeValue;
+    private boolean brakeIsIllegal;
+    private int gearValue;
+    private boolean gearIsIllegal;
+    private int motorValue;
+    private boolean motorIsIllegal;
+    private int suspensionValue;
+    private boolean suspensionIsIllegal;
+
+    private TextView brakeText;
+    private TextView gearText;
+    private TextView motorText;
+    private TextView suspensionText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,21 +36,25 @@ public class VoitureRecap extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_voiture_recap);
 
-        brake = getIntent().getIntExtra("Brake", 0);
+        brakeValue = getIntent().getIntExtra("BrakeValue", 0);
+        brakeIsIllegal = getIntent().getBooleanExtra("BrakeIsIllegal", false);
         brakeText = findViewById(R.id.BrakeAttribute);
-        brakeText.setText(String.valueOf(brake));
+        brakeText.setText(String.valueOf(brakeValue));
 
-        gear = getIntent().getIntExtra("Gear", 0);
+        gearValue = getIntent().getIntExtra("GearValue", 0);
+        gearIsIllegal = getIntent().getBooleanExtra("GearIsIllegal", false);
         gearText = findViewById(R.id.GearAttribute);
-        gearText.setText(String.valueOf(gear));
+        gearText.setText(String.valueOf(gearValue));
 
-        motor = getIntent().getIntExtra("Motor", 0);
+        motorValue = getIntent().getIntExtra("MotorValue", 0);
+        motorIsIllegal = getIntent().getBooleanExtra("MotorIsIllegal", false);
         motorText = findViewById(R.id.MotorAttribute);
-        motorText.setText(String.valueOf(motor));
+        motorText.setText(String.valueOf(motorValue));
 
-        suspension = getIntent().getIntExtra("Suspension", 0);
+        suspensionValue = getIntent().getIntExtra("SuspensionValue", 0);
+        suspensionIsIllegal = getIntent().getBooleanExtra("SuspensionIsIllegal", false);
         suspensionText = findViewById(R.id.SuspensionAttribute);
-        suspensionText.setText(String.valueOf(suspension));
+        suspensionText.setText(String.valueOf(suspensionValue));
 
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
@@ -43,15 +64,6 @@ public class VoitureRecap extends AppCompatActivity {
         });
     }
 
-    private int brake;
-    private int gear;
-    private int motor;
-    private int suspension;
-
-    private TextView brakeText;
-    private TextView gearText;
-    private TextView motorText;
-    private TextView suspensionText;
 
     public void close (View view){
         finish();
@@ -59,7 +71,31 @@ public class VoitureRecap extends AppCompatActivity {
 
     public void validate (View view){
         Intent intent = new Intent(this, Essais.class);
-        startActivity(intent);
+
+        Executors.newSingleThreadExecutor().execute(() -> {
+            AppDataBase db = AppDataBase.getInstance(getApplicationContext());
+
+            Moteur moteur = new Moteur(motorValue, motorIsIllegal);
+            long moteurId = db.moteurDAO().insert(moteur);
+
+            Frein frein = new Frein(brakeValue, brakeIsIllegal);
+            long freinId = db.freinDAO().insert(frein);
+
+            Boite boite = new Boite(gearValue, gearIsIllegal);
+            long boiteId = db.boiteDAO().insert(boite);
+
+            Suspension suspension = new Suspension(suspensionValue, suspensionIsIllegal);
+            long suspensionId = db.suspensionDAO().insert(suspension);
+
+            Voiture voiture = new Voiture((int) moteurId, (int) freinId, (int) boiteId, (int) suspensionId);
+            long voitureId = db.voitureDAO().insert(voiture);
+
+            intent.putExtra("VoitureId", (int)voitureId);
+
+            runOnUiThread(() -> {
+                startActivity(intent);
+            });
+        });
     }
 
 
