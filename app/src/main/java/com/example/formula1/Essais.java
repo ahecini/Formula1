@@ -1,5 +1,6 @@
 package com.example.formula1;
 
+import android.view.View;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.SeekBar;
@@ -8,8 +9,12 @@ import android.widget.TextView;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
+import android.content.Intent;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
 public class Essais extends AppCompatActivity {
 
@@ -31,6 +36,8 @@ public class Essais extends AppCompatActivity {
     private String[] consoStrat;
     private String[] stratType;
 
+    private int voitureId;
+
 
 
     @Override
@@ -38,6 +45,12 @@ public class Essais extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_essais);
+
+        voitureId = getIntent().getIntExtra("VoitureId", -1);
+        if (voitureId == -1) {
+            finish();
+            return;
+        }
 
         textViewChoseTires = findViewById(R.id.textViewChoseTires);
         textViewChoseFuel = findViewById(R.id.textViewChoseFuel);
@@ -138,7 +151,7 @@ public class Essais extends AppCompatActivity {
         textViewChoseTires.setText(tireType[startTire]);
 
         int startFuel = seekBarFuel.getProgress();
-        textViewChoseFuel.setText(fuelStrat[startFuel]);
+        textViewChoseFuel.setText(fuelStrat[startFuel] + " %");
 
         int startConso = seekBarConso.getProgress();
         textViewChoseConso.setText(consoStrat[startConso]);
@@ -153,8 +166,29 @@ public class Essais extends AppCompatActivity {
         });
     }
 
-    public void quit(){
+    public void quit(View view){
         finish();
     }
 
+    public void validate(View view){
+        int carburant = Integer.parseInt(fuelStrat[seekBarFuel.getProgress()]);
+        String pneu = tireType[seekBarTire.getProgress()];
+
+        majVoiture(carburant, pneu);
+    }
+
+    public void majVoiture(int carburant, String pneu){
+
+        Executors.newSingleThreadExecutor().execute(() -> {
+            AppDataBase db = AppDataBase.getInstance(getApplicationContext());
+            db.voitureDAO().updateCarburantById(voitureId, carburant);
+            db.voitureDAO().updatePneuById(voitureId, pneu);
+
+            runOnUiThread(() -> {
+                Intent intent = new Intent(Essais.this, EssaisResultats.class);
+                intent.putExtra("VoitureId", voitureId);
+                startActivity(intent);
+            });
+        });
+    }
 }

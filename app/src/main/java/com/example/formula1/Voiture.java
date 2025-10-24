@@ -24,7 +24,7 @@ foreignKeys = {
 )
 public class Voiture {
     @PrimaryKey(autoGenerate = true)
-    private int id;
+    int id;
 
     @ColumnInfo(name = "moteur_id", index = true)
     private int moteurId;
@@ -55,6 +55,10 @@ public class Voiture {
 
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getMoteurId() {
