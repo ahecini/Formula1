@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Event_2">
+
+    <TextView
+        android:id="@+id/textViewLapCount2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:text="Lap 10"
+        app:layout_constraintBottom_toTopOf="@+id/textViewEvent2Title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewEvent2Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:text="Un accident"
+        app:layout_constraintBottom_toTopOf="@+id/textViewEvent2Text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewEvent2Text"
+        android:layout_width="339dp"
+        android:layout_height="217dp"
+        android:layout_marginBottom="60dp"
+        android:text="Bla bla y'a un accident. On en profite pour faire un arrêt au stand ?"
+        app:layout_constraintBottom_toTopOf="@+id/textViewCarState"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/buttonGoPitStop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="52dp"
+        android:text="Faire un arrêt au stand"
+        app:layout_constraintBottom_toTopOf="@+id/buttonStayOnTrace"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/buttonStayOnTrace"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="92dp"
+        android:text="Rester sur le circuit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewCarState"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:text="État de la voiture :"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewTireState"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textViewTireState"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textViewTireState"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:text="Type de pneus"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewActualTire2"
+        app:layout_constraintStart_toEndOf="@+id/textViewCarState"
+        app:layout_constraintTop_toTopOf="@+id/textViewActualTire2"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/textViewFuelState"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="172dp"
+        android:layout_marginBottom="40dp"
+        android:text="Carburant :"
+        app:layout_constraintBottom_toTopOf="@+id/buttonGoPitStop"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewActualTire2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginBottom="24dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/textViewFuelState"
+        app:layout_constraintStart_toEndOf="@+id/textViewTireState" />
+
+    <TextView
+        android:id="@+id/textViewActualFuel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginBottom="40dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/buttonGoPitStop"
+        app:layout_constraintStart_toEndOf="@+id/textViewFuelState" />
+</androidx.constraintlayout.widget.ConstraintLayout>
