@@ -10,17 +10,26 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class Recrutement extends AppCompatActivity {
+public class RecapPiloteActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_recrutement);
+        setContentView(R.layout.activity_recap_pilote);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+    }
+
+    public void close(View view){
+        finish();
+    }
+
+    public void start(View view) {
+        Intent intent = new Intent(this, CarActivity.class);
+        startActivity(intent);
     }
 }

@@ -5,39 +5,24 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Recrutement">
+    tools:context=".EntrainementActivity">
 
     <TextView
         android:id="@+id/textViewCar"
         android:layout_width="144dp"
         android:layout_height="57dp"
         android:layout_marginStart="165dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="58dp"
         android:layout_marginEnd="165dp"
         android:fontFamily="@font/racing_sans_one"
         android:foregroundTint="#FDFBFB"
-        android:text="Draft"
+        android:text="Training"
         android:textColor="#DC0C0C"
-        android:textSize="48sp"
+        android:textSize="35sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.349"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/editTextText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="20dp"
-        android:ems="10"
-        android:fontFamily="@font/racing_sans_one"
-        android:inputType="text"
-        android:minHeight="48dp"
-        android:text="Name"
-        android:textColor="#F4031B"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewCar" />
 
     <TextView
         android:id="@+id/textViewMotor"
@@ -50,65 +35,6 @@
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewGear" />
-
-    <Spinner
-        android:id="@+id/spinnerSuspension"
-        android:layout_width="134dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="34dp"
-        android:layout_marginEnd="24dp"
-        android:entries="@array/skillsLevel"
-        android:scrollbarSize="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerMotor" />
-
-    <Spinner
-        android:id="@+id/spinnerGear"
-        android:layout_width="134dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="24dp"
-        android:entries="@array/skillsLevel"
-        android:scrollbarSize="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerBrake" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="37dp"
-        android:layout_marginTop="164dp"
-        android:layout_marginEnd="24dp"
-        android:fontFamily="@font/racing_sans_one"
-        android:text="Nom"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toStartOf="@+id/editTextText"
-        app:layout_constraintHorizontal_bias="0.909"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Spinner
-        android:id="@+id/spinnerMotor"
-        android:layout_width="134dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="34dp"
-        android:layout_marginEnd="24dp"
-        android:entries="@array/skillsLevel"
-        android:scrollbarSize="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerGear" />
-
-    <Spinner
-        android:id="@+id/spinnerBrake"
-        android:layout_width="134dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="45dp"
-        android:layout_marginEnd="24dp"
-        android:entries="@array/skillsLevel"
-        android:scrollbarSize="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText" />
 
     <TextView
         android:id="@+id/textViewGear"
@@ -127,15 +53,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="42dp"
-        android:layout_marginTop="52dp"
-        android:layout_marginEnd="72dp"
+        android:layout_marginTop="100dp"
         android:fontFamily="@font/racing_sans_one"
         android:text="Virage"
         android:textSize="24sp"
-        app:layout_constraintEnd_toStartOf="@+id/spinnerBrake"
-        app:layout_constraintHorizontal_bias="0.328"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <TextView
         android:id="@+id/textViewSuspension"
@@ -143,13 +66,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="45dp"
         android:layout_marginTop="48dp"
-        android:layout_marginEnd="60dp"
         android:fontFamily="@font/racing_sans_one"
         android:text="Contrôle"
         android:textColorLink="#ED1010"
         android:textSize="24sp"
-        app:layout_constraintEnd_toStartOf="@+id/spinnerSuspension"
-        app:layout_constraintHorizontal_bias="0.44"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewMotor" />
 
@@ -161,6 +81,7 @@
         android:layout_marginBottom="68dp"
         android:backgroundTint="#44FB1B"
         android:fontFamily="@font/racing_sans_one"
+        android:onClick="validate"
         android:text="Valider"
         android:textColor="#140D0D"
         android:textColorLink="#2DE615"
@@ -177,6 +98,7 @@
         android:layout_marginBottom="68dp"
         android:backgroundTint="#E20E0E"
         android:fontFamily="@font/racing_sans_one"
+        android:onClick="close"
         android:text="Annuler"
         android:textColor="#070707"
         android:textColorLink="#E61D1D"
@@ -206,5 +128,72 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/f1_2018_logo_removebg_preview" />
 
+    <SeekBar
+        android:id="@+id/seekBar5"
+        style="@style/Widget.AppCompat.SeekBar.Discrete"
+        android:layout_width="131dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="15dp"
+        android:max="100"
+        android:progress="10"
+        android:progressDrawable="@drawable/grading___copie"
+        android:thumb="@android:drawable/btn_default"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.604"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+    <SeekBar
+        android:id="@+id/seekBar6"
+        style="@style/Widget.AppCompat.SeekBar.Discrete"
+        android:layout_width="131dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="15dp"
+        android:max="100"
+        android:progress="10"
+        android:progressDrawable="@drawable/grading___copie"
+        android:thumb="@android:drawable/btn_default"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.604"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/seekBar5" />
+
+    <SeekBar
+        android:id="@+id/seekBar7"
+        style="@style/Widget.AppCompat.SeekBar.Discrete"
+        android:layout_width="131dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="55dp"
+        android:layout_marginEnd="15dp"
+        android:max="100"
+        android:progress="10"
+        android:progressDrawable="@drawable/grading___copie"
+        android:thumb="@android:drawable/btn_default"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.604"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/seekBar6" />
+
+    <SeekBar
+        android:id="@+id/seekBar8"
+        style="@style/Widget.AppCompat.SeekBar.Discrete"
+        android:layout_width="131dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="55dp"
+        android:layout_marginEnd="15dp"
+        android:max="100"
+        android:progress="10"
+        android:progressDrawable="@drawable/grading___copie"
+        android:thumb="@android:drawable/btn_default"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.604"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/seekBar7" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

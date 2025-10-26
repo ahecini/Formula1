@@ -12,6 +12,24 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Formula1">
         <activity
+            android:name=".CarRecapActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CarActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RecapPiloteVoitureActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DraftActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RecapPiloteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EntrainementActivity"
+            android:exported="false" />
+        <activity
             android:name=".VoitureRecap"
             android:exported="false" />
         <activity

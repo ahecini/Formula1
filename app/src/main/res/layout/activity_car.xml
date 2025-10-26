@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CarActivity">
+
+    <TextView
+        android:id="@+id/textViewCar"
+        android:layout_width="203dp"
+        android:layout_height="91dp"
+        android:layout_marginStart="140dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="165dp"
+        android:fontFamily="@font/racing_sans_one"
+        android:foregroundTint="#FDFBFB"
+        android:text="Car info"
+        android:textColor="#DC0C0C"
+        android:textSize="35sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.163"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/spinnerBrake"
+        android:layout_width="134dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="41dp"
+        android:layout_marginTop="10dp"
+        android:entries="@array/skillsLevel"
+        android:scrollbarSize="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewBrake" />
+
+    <TextView
+        android:id="@+id/textViewBrake"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="76dp"
+        android:fontFamily="@font/racing_sans_one"
+        android:text="@string/Brake"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <TextView
+        android:id="@+id/textViewGear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/racing_sans_one"
+        android:text="@string/Gear"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerBrake" />
+
+    <TextView
+        android:id="@+id/textViewMotor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/racing_sans_one"
+        android:text="@string/Motor"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerGear" />
+
+    <TextView
+        android:id="@+id/textViewSuspension"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/racing_sans_one"
+        android:text="@string/Suspension"
+        android:textColorLink="#ED1010"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerMotor" />
+
+    <Spinner
+        android:id="@+id/spinnerSuspension"
+        android:layout_width="134dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="10dp"
+        android:entries="@array/skillsLevel"
+        android:scrollbarSize="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewSuspension" />
+
+    <Spinner
+        android:id="@+id/spinnerGear"
+        android:layout_width="134dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="41dp"
+        android:layout_marginTop="12dp"
+        android:entries="@array/skillsLevel"
+        android:scrollbarSize="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewGear" />
+
+    <Spinner
+        android:id="@+id/spinnerMotor"
+        android:layout_width="134dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="10dp"
+        android:entries="@array/skillsLevel"
+        android:scrollbarSize="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewMotor" />
+
+    <Button
+        android:id="@+id/buttonValidate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="52dp"
+        android:layout_marginBottom="48dp"
+        android:backgroundTint="#44FB1B"
+        android:fontFamily="@font/racing_sans_one"
+        android:onClick="validate"
+        android:text="Valider"
+        android:textColor="#140D0D"
+        android:textColorLink="#2DE615"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/buttonQuit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="59dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="48dp"
+        android:backgroundTint="#E20E0E"
+        android:fontFamily="@font/racing_sans_one"
+        android:onClick="close"
+        android:text="Annuler"
+        android:textColor="#070707"
+        android:textColorLink="#E61D1D"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/buttonValidate"
+        app:layout_constraintHorizontal_bias="0.846"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="110dp"
+        android:layout_height="76dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="6dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/f1_2018_logo_removebg_preview" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="110dp"
+        android:layout_height="76dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="48dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/f1_2018_logo_removebg_preview" />
+
+    <Switch
+        android:id="@+id/switchLegalBrake"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="75dp"
+        android:text="@string/Illegal"
+        app:layout_constraintBottom_toBottomOf="@+id/spinnerBrake"
+        app:layout_constraintStart_toEndOf="@+id/spinnerBrake"
+        app:layout_constraintTop_toTopOf="@+id/spinnerBrake" />
+
+    <Switch
+        android:id="@+id/switchLegalGear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="75dp"
+        android:text="@string/Illegal"
+        app:layout_constraintBottom_toBottomOf="@+id/spinnerGear"
+        app:layout_constraintStart_toEndOf="@+id/spinnerGear"
+        app:layout_constraintTop_toTopOf="@+id/spinnerGear" />
+
+    <Switch
+        android:id="@+id/switchLegalMotor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="75dp"
+        android:text="@string/Illegal"
+        app:layout_constraintBottom_toBottomOf="@+id/spinnerMotor"
+        app:layout_constraintStart_toEndOf="@+id/spinnerMotor"
+        app:layout_constraintTop_toTopOf="@+id/spinnerMotor" />
+
+    <Switch
+        android:id="@+id/switchLegalSuspension"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="75dp"
+        android:text="@string/Illegal"
+        app:layout_constraintBottom_toBottomOf="@+id/spinnerSuspension"
+        app:layout_constraintStart_toEndOf="@+id/spinnerSuspension"
+        app:layout_constraintTop_toTopOf="@+id/spinnerSuspension" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

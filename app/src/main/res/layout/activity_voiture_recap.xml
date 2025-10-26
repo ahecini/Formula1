@@ -108,6 +108,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="84dp"
         android:layout_marginBottom="88dp"
+        android:onClick="validate"
         android:text="@string/Validate"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

@@ -19,8 +19,8 @@ public class MainActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.ecran_titre);
 
-        startbutton = findViewById(R.id.button);
-        quitbutton = findViewById(R.id.button2);
+        startbutton = findViewById(R.id.buttonValidate);
+        quitbutton = findViewById(R.id.buttonQuit);
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void start(View view) {
-        Intent intent = new Intent(this, Voiture.class);
+        Intent intent = new Intent(this, DraftActivity.class);
         startActivity(intent);
     }
 

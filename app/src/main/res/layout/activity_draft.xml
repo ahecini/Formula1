@@ -5,8 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Recrutement">
-
+    tools:context=".DraftActivity">
     <TextView
         android:id="@+id/textViewCar"
         android:layout_width="144dp"
@@ -161,6 +160,7 @@
         android:layout_marginBottom="68dp"
         android:backgroundTint="#44FB1B"
         android:fontFamily="@font/racing_sans_one"
+        android:onClick="validate"
         android:text="Valider"
         android:textColor="#140D0D"
         android:textColorLink="#2DE615"
@@ -177,6 +177,7 @@
         android:layout_marginBottom="68dp"
         android:backgroundTint="#E20E0E"
         android:fontFamily="@font/racing_sans_one"
+        android:onClick="close"
         android:text="Annuler"
         android:textColor="#070707"
         android:textColorLink="#E61D1D"
@@ -205,6 +206,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/f1_2018_logo_removebg_preview" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

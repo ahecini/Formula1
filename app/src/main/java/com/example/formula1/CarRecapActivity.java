@@ -11,13 +11,23 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class VoitureRecap extends AppCompatActivity {
+public class CarRecapActivity extends AppCompatActivity {
+
+    private int brake;
+    private int gear;
+    private int motor;
+    private int suspension;
+
+    private TextView brakeText;
+    private TextView gearText;
+    private TextView motorText;
+    private TextView suspensionText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_voiture_recap);
+        setContentView(R.layout.activity_car_recap);
 
         brake = getIntent().getIntExtra("Brake", 0);
         brakeText = findViewById(R.id.BrakeAttribute);
@@ -35,23 +45,12 @@ public class VoitureRecap extends AppCompatActivity {
         suspensionText = findViewById(R.id.SuspensionAttribute);
         suspensionText.setText(String.valueOf(suspension));
 
-
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
     }
-
-    private int brake;
-    private int gear;
-    private int motor;
-    private int suspension;
-
-    private TextView brakeText;
-    private TextView gearText;
-    private TextView motorText;
-    private TextView suspensionText;
 
     public void close (View view){
         finish();
@@ -61,6 +60,4 @@ public class VoitureRecap extends AppCompatActivity {
         Intent intent = new Intent(this, EntrainementActivity.class);
         startActivity(intent);
     }
-
-
 }
