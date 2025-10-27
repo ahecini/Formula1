@@ -25,7 +25,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextText"
+        android:id="@+id/editTextName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
@@ -52,7 +52,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textViewGear" />
 
     <Spinner
-        android:id="@+id/spinnerSuspension"
+        android:id="@+id/spinnerControl"
         android:layout_width="134dp"
         android:layout_height="48dp"
         android:layout_marginTop="34dp"
@@ -60,10 +60,10 @@
         android:entries="@array/skillsLevel"
         android:scrollbarSize="10dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerMotor" />
+        app:layout_constraintTop_toBottomOf="@+id/spinnerReact" />
 
     <Spinner
-        android:id="@+id/spinnerGear"
+        android:id="@+id/spinnerAdapt"
         android:layout_width="134dp"
         android:layout_height="48dp"
         android:layout_marginTop="28dp"
@@ -71,7 +71,7 @@
         android:entries="@array/skillsLevel"
         android:scrollbarSize="10dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerBrake" />
+        app:layout_constraintTop_toBottomOf="@+id/spinnerTurn" />
 
     <TextView
         android:id="@+id/textView2"
@@ -83,13 +83,13 @@
         android:fontFamily="@font/racing_sans_one"
         android:text="Nom"
         android:textSize="24sp"
-        app:layout_constraintEnd_toStartOf="@+id/editTextText"
+        app:layout_constraintEnd_toStartOf="@+id/editTextName"
         app:layout_constraintHorizontal_bias="0.909"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Spinner
-        android:id="@+id/spinnerMotor"
+        android:id="@+id/spinnerReact"
         android:layout_width="134dp"
         android:layout_height="48dp"
         android:layout_marginTop="34dp"
@@ -97,10 +97,10 @@
         android:entries="@array/skillsLevel"
         android:scrollbarSize="10dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerGear" />
+        app:layout_constraintTop_toBottomOf="@+id/spinnerAdapt" />
 
     <Spinner
-        android:id="@+id/spinnerBrake"
+        android:id="@+id/spinnerTurn"
         android:layout_width="134dp"
         android:layout_height="48dp"
         android:layout_marginTop="45dp"
@@ -108,7 +108,7 @@
         android:entries="@array/skillsLevel"
         android:scrollbarSize="10dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextName" />
 
     <TextView
         android:id="@+id/textViewGear"
@@ -132,7 +132,7 @@
         android:fontFamily="@font/racing_sans_one"
         android:text="Virage"
         android:textSize="24sp"
-        app:layout_constraintEnd_toStartOf="@+id/spinnerBrake"
+        app:layout_constraintEnd_toStartOf="@+id/spinnerTurn"
         app:layout_constraintHorizontal_bias="0.328"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
@@ -148,7 +148,7 @@
         android:text="Contrôle"
         android:textColorLink="#ED1010"
         android:textSize="24sp"
-        app:layout_constraintEnd_toStartOf="@+id/spinnerSuspension"
+        app:layout_constraintEnd_toStartOf="@+id/spinnerControl"
         app:layout_constraintHorizontal_bias="0.44"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewMotor" />

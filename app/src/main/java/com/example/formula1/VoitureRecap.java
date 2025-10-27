@@ -38,22 +38,22 @@ public class VoitureRecap extends AppCompatActivity {
 
         brakeValue = getIntent().getIntExtra("BrakeValue", 0);
         brakeIsIllegal = getIntent().getBooleanExtra("BrakeIsIllegal", false);
-        brakeText = findViewById(R.id.BrakeAttribute);
+        brakeText = findViewById(R.id.textViewChoseTurn);
         brakeText.setText(String.valueOf(brakeValue));
 
         gearValue = getIntent().getIntExtra("GearValue", 0);
         gearIsIllegal = getIntent().getBooleanExtra("GearIsIllegal", false);
-        gearText = findViewById(R.id.GearAttribute);
+        gearText = findViewById(R.id.textViewChoseAdapt);
         gearText.setText(String.valueOf(gearValue));
 
         motorValue = getIntent().getIntExtra("MotorValue", 0);
         motorIsIllegal = getIntent().getBooleanExtra("MotorIsIllegal", false);
-        motorText = findViewById(R.id.MotorAttribute);
+        motorText = findViewById(R.id.textViewChoseReact);
         motorText.setText(String.valueOf(motorValue));
 
         suspensionValue = getIntent().getIntExtra("SuspensionValue", 0);
         suspensionIsIllegal = getIntent().getBooleanExtra("SuspensionIsIllegal", false);
-        suspensionText = findViewById(R.id.SuspensionAttribute);
+        suspensionText = findViewById(R.id.textViewChoseControl);
         suspensionText.setText(String.valueOf(suspensionValue));
 
 

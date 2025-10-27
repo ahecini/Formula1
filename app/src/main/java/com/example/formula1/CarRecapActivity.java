@@ -30,19 +30,19 @@ public class CarRecapActivity extends AppCompatActivity {
         setContentView(R.layout.activity_car_recap);
 
         brake = getIntent().getIntExtra("Brake", 0);
-        brakeText = findViewById(R.id.BrakeAttribute);
+        brakeText = findViewById(R.id.textViewChoseTurn);
         brakeText.setText(String.valueOf(brake));
 
         gear = getIntent().getIntExtra("Gear", 0);
-        gearText = findViewById(R.id.GearAttribute);
+        gearText = findViewById(R.id.textViewChoseAdapt);
         gearText.setText(String.valueOf(gear));
 
         motor = getIntent().getIntExtra("Motor", 0);
-        motorText = findViewById(R.id.MotorAttribute);
+        motorText = findViewById(R.id.textViewChoseReact);
         motorText.setText(String.valueOf(motor));
 
         suspension = getIntent().getIntExtra("Suspension", 0);
-        suspensionText = findViewById(R.id.SuspensionAttribute);
+        suspensionText = findViewById(R.id.textViewChoseControl);
         suspensionText.setText(String.valueOf(suspension));
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {

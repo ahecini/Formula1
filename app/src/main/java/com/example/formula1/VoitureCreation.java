@@ -33,10 +33,10 @@ public class VoitureCreation extends AppCompatActivity {
         TextView textViewMotor = findViewById(R.id.textViewMotor);
         TextView textViewSuspension = findViewById(R.id.textViewSuspension);
 
-        spinnerBrake = findViewById(R.id.spinnerBrake);
-        spinnerGear = findViewById(R.id.spinnerGear);
-        spinnerMotor = findViewById(R.id.spinnerMotor);
-        spinnerSuspension = findViewById(R.id.spinnerSuspension);
+        spinnerBrake = findViewById(R.id.spinnerTurn);
+        spinnerGear = findViewById(R.id.spinnerAdapt);
+        spinnerMotor = findViewById(R.id.spinnerReact);
+        spinnerSuspension = findViewById(R.id.spinnerControl);
 
         validate = findViewById(R.id.buttonValidate);
         quit = findViewById(R.id.buttonQuit);

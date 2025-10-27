@@ -14,7 +14,7 @@
         android:layout_marginTop="48dp"
         android:text="@string/Car"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/spinnerBrake"
+        app:layout_constraintBottom_toTopOf="@+id/spinnerTurn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:text="@string/Brake"
-        app:layout_constraintBottom_toTopOf="@+id/spinnerBrake"
+        app:layout_constraintBottom_toTopOf="@+id/spinnerTurn"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -36,7 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:text="@string/Gear"
-        app:layout_constraintBottom_toTopOf="@+id/spinnerGear"
+        app:layout_constraintBottom_toTopOf="@+id/spinnerAdapt"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -45,7 +45,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:text="@string/Motor"
-        app:layout_constraintBottom_toTopOf="@+id/spinnerMotor"
+        app:layout_constraintBottom_toTopOf="@+id/spinnerReact"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -54,41 +54,41 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:text="@string/Suspension"
-        app:layout_constraintBottom_toTopOf="@+id/spinnerSuspension"
+        app:layout_constraintBottom_toTopOf="@+id/spinnerControl"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Spinner
-        android:id="@+id/spinnerBrake"
+        android:id="@+id/spinnerTurn"
         android:layout_width="173dp"
         android:layout_height="69dp"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="68dp"
         android:entries="@array/attributeNumber"
-        app:layout_constraintBottom_toTopOf="@+id/spinnerGear"
+        app:layout_constraintBottom_toTopOf="@+id/spinnerAdapt"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Spinner
-        android:id="@+id/spinnerGear"
+        android:id="@+id/spinnerAdapt"
         android:layout_width="173dp"
         android:layout_height="69dp"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="68dp"
         android:entries="@array/attributeNumber"
-        app:layout_constraintBottom_toTopOf="@+id/spinnerMotor"
+        app:layout_constraintBottom_toTopOf="@+id/spinnerReact"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Spinner
-        android:id="@+id/spinnerMotor"
+        android:id="@+id/spinnerReact"
         android:layout_width="173dp"
         android:layout_height="69dp"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="68dp"
         android:entries="@array/attributeNumber"
-        app:layout_constraintBottom_toTopOf="@+id/spinnerSuspension"
+        app:layout_constraintBottom_toTopOf="@+id/spinnerControl"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Spinner
-        android:id="@+id/spinnerSuspension"
+        android:id="@+id/spinnerControl"
         android:layout_width="173dp"
         android:layout_height="69dp"
         android:layout_marginStart="16dp"
@@ -127,11 +127,11 @@
         android:showText="true"
         android:text="Illegal"
         android:textAlignment="viewStart"
-        app:layout_constraintBottom_toBottomOf="@+id/spinnerBrake"
+        app:layout_constraintBottom_toBottomOf="@+id/spinnerTurn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.27"
-        app:layout_constraintStart_toEndOf="@+id/spinnerBrake"
-        app:layout_constraintTop_toTopOf="@+id/spinnerBrake"
+        app:layout_constraintStart_toEndOf="@+id/spinnerTurn"
+        app:layout_constraintTop_toTopOf="@+id/spinnerTurn"
         app:layout_constraintVertical_bias="0.476" />
 
     <Switch
@@ -140,10 +140,10 @@
         android:layout_height="48dp"
         android:showText="true"
         android:text="llegal"
-        app:layout_constraintBottom_toBottomOf="@+id/spinnerGear"
+        app:layout_constraintBottom_toBottomOf="@+id/spinnerAdapt"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/spinnerGear"
-        app:layout_constraintTop_toTopOf="@+id/spinnerGear" />
+        app:layout_constraintStart_toEndOf="@+id/spinnerAdapt"
+        app:layout_constraintTop_toTopOf="@+id/spinnerAdapt" />
 
     <Switch
         android:id="@+id/switchLegalMotor"
@@ -151,10 +151,10 @@
         android:layout_height="48dp"
         android:showText="true"
         android:text="Illegal"
-        app:layout_constraintBottom_toBottomOf="@+id/spinnerMotor"
+        app:layout_constraintBottom_toBottomOf="@+id/spinnerReact"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/spinnerMotor"
-        app:layout_constraintTop_toTopOf="@+id/spinnerMotor" />
+        app:layout_constraintStart_toEndOf="@+id/spinnerReact"
+        app:layout_constraintTop_toTopOf="@+id/spinnerReact" />
 
     <Switch
         android:id="@+id/switchLegalSuspension"
@@ -162,8 +162,8 @@
         android:layout_height="48dp"
         android:showText="true"
         android:text="Illegal"
-        app:layout_constraintBottom_toBottomOf="@+id/spinnerSuspension"
+        app:layout_constraintBottom_toBottomOf="@+id/spinnerControl"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/spinnerSuspension"
-        app:layout_constraintTop_toTopOf="@+id/spinnerSuspension" />
+        app:layout_constraintStart_toEndOf="@+id/spinnerControl"
+        app:layout_constraintTop_toTopOf="@+id/spinnerControl" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -40,14 +40,13 @@ public class Pilote {
     @ColumnInfo(name = "temps")
     private int temps;
 
-    public Pilote(Integer voitureId,
-                  String nom,
+    public Pilote(String nom,
                   int virage,
                   int adaptabilite,
                   int controle,
                   int reactivite
                   ){
-        this.voitureId = voitureId;
+        this.voitureId = null;
         this.nom = nom;
         this.virage = virage;
         this.adaptabilite = adaptabilite;

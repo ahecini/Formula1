@@ -29,7 +29,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/MotorAttribute"
+        android:id="@+id/textViewChoseReact"
         android:layout_width="70dp"
         android:layout_height="46dp"
         android:layout_marginStart="52dp"
@@ -40,7 +40,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/GearAttribute"
+        android:id="@+id/textViewChoseAdapt"
         android:layout_width="70dp"
         android:layout_height="46dp"
         android:layout_marginStart="52dp"
@@ -51,7 +51,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/SuspensionAttribute"
+        android:id="@+id/textViewChoseControl"
         android:layout_width="70dp"
         android:layout_height="46dp"
         android:layout_marginStart="52dp"
@@ -62,7 +62,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/BrakeAttribute"
+        android:id="@+id/textViewChoseTurn"
         android:layout_width="70dp"
         android:layout_height="46dp"
         android:layout_marginStart="52dp"

@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Formula1">
         <activity
+            android:name=".RecapPiloteActivity"
+            android:exported="false" />
+        <activity
             android:name=".DraftActivity"
             android:exported="false" />
         <activity
