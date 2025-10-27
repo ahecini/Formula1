@@ -55,7 +55,7 @@ public class Event_1 extends AppCompatActivity {
             db.voitureDAO().updatePneuById(voitureId, tireType[3]);
 
             runOnUiThread(()->{
-               Intent intent = new Intent(Event_1.this, EssaisResultats.class);
+               Intent intent = new Intent(Event_1.this, Event_2.class);
                intent.putExtra("VoitureId", voitureId);
                startActivity(intent);
             });
@@ -63,7 +63,7 @@ public class Event_1 extends AppCompatActivity {
     }
 
     public void keepTire(View view){
-        Intent intent = new Intent(Event_1.this, EssaisResultats.class);
+        Intent intent = new Intent(Event_1.this, Event_2.class);
         intent.putExtra("VoitureId", voitureId);
         startActivity(intent);
     }

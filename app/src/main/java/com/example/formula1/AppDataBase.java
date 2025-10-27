@@ -6,12 +6,13 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
 @Database(
-        entities = {Voiture.class, Moteur.class, Frein.class, Boite.class, Suspension.class},
-        version = 1,
+        entities = {Voiture.class, Moteur.class, Frein.class, Boite.class, Suspension.class, Pilote.class},
+        version = 2,
         exportSchema = false
 )
 public abstract class AppDataBase extends RoomDatabase {
     public abstract VoitureDAO voitureDAO();
+    public abstract PiloteDAO piloteDAO();
     public abstract MoteurDAO moteurDAO();
     public abstract FreinDAO freinDAO();
     public abstract BoiteDAO boiteDAO();
