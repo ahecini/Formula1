@@ -23,4 +23,7 @@ public interface VoitureDAO {
 
     @Query("DELETE FROM voiture WHERE id = :id")
     void deleteVoitureById(int id);
+
+    @Query("DELETE FROM voiture")
+    void deleteAllVoitures();
 }

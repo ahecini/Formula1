@@ -18,7 +18,7 @@ public class Event_2 extends AppCompatActivity {
 
     private TextView textViewActualTire2;
     private TextView textViewActualFuel;
-    private int voitureId;
+    private int piloteId;
 
 
     @Override
@@ -30,13 +30,13 @@ public class Event_2 extends AppCompatActivity {
         textViewActualTire2 = findViewById(R.id.textViewActualTire2);
         textViewActualFuel = findViewById(R.id.textViewActualFuel);
 
-        voitureId = getIntent().getIntExtra("VoitureId", -1);
-        if(voitureId == -1) {
+        piloteId = getIntent().getIntExtra("piloteId", -1);
+        if(piloteId == -1) {
             finish();
             return;
         }
 
-        loadVoitureData(voitureId);
+        loadVoitureData();
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -45,9 +45,12 @@ public class Event_2 extends AppCompatActivity {
         });
     }
 
-    private void loadVoitureData(int voitureId){
+    private void loadVoitureData(){
         Executors.newSingleThreadExecutor().execute(() -> {
             AppDataBase db = AppDataBase.getInstance(getApplicationContext());
+            PiloteEtVoiture data = db.piloteDAO().getPiloteAvecVoitureById(piloteId);
+            int voitureId = data.voitureAvecPiece.voiture.getId();
+
             VoitureAvecPiece voitureAvecPiece = db.voitureDAO().getVoitureAvecPieceById(voitureId);
 
             if(voitureAvecPiece == null) {
@@ -65,19 +68,33 @@ public class Event_2 extends AppCompatActivity {
     public void pitStop(View view){
         Executors.newSingleThreadExecutor().execute(() -> {
             AppDataBase db = AppDataBase.getInstance(getApplicationContext());
+            PiloteEtVoiture data = db.piloteDAO().getPiloteAvecVoitureById(piloteId);
+            int voitureId = data.voitureAvecPiece.voiture.getId();
+
             db.voitureDAO().updateCarburantById(voitureId, 100);
 
             runOnUiThread(()->{
-                Intent intent = new Intent(Event_2.this, EssaisResultats.class);
-                intent.putExtra("VoitureId", voitureId);
+                Intent intent = new Intent(Event_2.this, Podium.class);
+                intent.putExtra("piloteId", piloteId);
                 startActivity(intent);
             });
         });
     }
 
     public void stay(View view){
-        Intent intent = new Intent(Event_2.this, EssaisResultats.class);
-        intent.putExtra("VoitureId", voitureId);
-        startActivity(intent);
+        Executors.newSingleThreadExecutor().execute(() -> {
+            AppDataBase db = AppDataBase.getInstance(getApplicationContext());
+            PiloteEtVoiture data = db.piloteDAO().getPiloteAvecVoitureById(piloteId);
+            int voitureId = data.voitureAvecPiece.voiture.getId();
+            int carburant = data.voitureAvecPiece.voiture.getCarburant();
+
+            db.voitureDAO().updateCarburantById(voitureId, carburant-100);
+
+            runOnUiThread(()->{
+                Intent intent = new Intent(Event_2.this, Podium.class);
+                intent.putExtra("piloteId", piloteId);
+                startActivity(intent);
+            });
+        });
     }
 }

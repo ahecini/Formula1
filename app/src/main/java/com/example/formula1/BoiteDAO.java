@@ -28,4 +28,7 @@ public interface BoiteDAO {
 
     @Query("DELETE FROM boite WHERE id = :id")
     void deleteBoiteById(int id);
+
+    @Query("DELETE FROM boite")
+    void deleteAllBoite();
 }

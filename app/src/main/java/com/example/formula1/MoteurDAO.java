@@ -28,4 +28,7 @@ public interface MoteurDAO {
 
     @Query("DELETE FROM moteur WHERE id = :id")
     void deleteMoteurById(int id);
+
+    @Query("DELETE FROM moteur")
+    void deleteAllMoteur();
 }

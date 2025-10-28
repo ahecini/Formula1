@@ -2,7 +2,6 @@ package com.example.formula1;
 
 import android.view.View;
 import android.os.Bundle;
-import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -13,7 +12,6 @@ import android.content.Intent;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
 public class Essais extends AppCompatActivity {
@@ -28,15 +26,12 @@ public class Essais extends AppCompatActivity {
     private SeekBar seekBarConso;
     private SeekBar seekBarStrat;
 
-    private Button buttonValidateQualif;
-    private Button buttonQuitQualif;
-
     private String[] tireType;
     private String[] fuelStrat;
     private String[] consoStrat;
     private String[] stratType;
 
-    private int voitureId;
+    private int piloteId;
 
 
 
@@ -46,8 +41,8 @@ public class Essais extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_essais);
 
-        voitureId = getIntent().getIntExtra("VoitureId", -1);
-        if (voitureId == -1) {
+        piloteId = getIntent().getIntExtra("piloteId", -1);
+        if (piloteId == -1) {
             finish();
             return;
         }
@@ -61,9 +56,6 @@ public class Essais extends AppCompatActivity {
         seekBarFuel = findViewById(R.id.seekBarFuel);
         seekBarConso = findViewById(R.id.seekBarConso);
         seekBarStrat = findViewById(R.id.seekBarStrat);
-
-        buttonValidateQualif = findViewById(R.id.buttonValidateQualif);
-        buttonQuitQualif = findViewById(R.id.buttonQuitQualif);
 
         tireType = getResources().getStringArray(R.array.tireType);
         fuelStrat = getResources().getStringArray(R.array.fuelStrat);
@@ -178,15 +170,16 @@ public class Essais extends AppCompatActivity {
     }
 
     public void majVoiture(int carburant, String pneu){
-
         Executors.newSingleThreadExecutor().execute(() -> {
             AppDataBase db = AppDataBase.getInstance(getApplicationContext());
-            db.voitureDAO().updateCarburantById(voitureId, carburant);
-            db.voitureDAO().updatePneuById(voitureId, pneu);
+            PiloteEtVoiture data = db.piloteDAO().getPiloteAvecVoitureById(piloteId);
+
+            data.voitureAvecPiece.voiture.setPneu(pneu);
+            data.voitureAvecPiece.voiture.setCarburant(carburant);
 
             runOnUiThread(() -> {
                 Intent intent = new Intent(Essais.this, EssaisResultats.class);
-                intent.putExtra("VoitureId", voitureId);
+                intent.putExtra("piloteId", piloteId);
                 startActivity(intent);
             });
         });

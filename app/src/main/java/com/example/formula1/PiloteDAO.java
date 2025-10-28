@@ -29,4 +29,10 @@ public interface PiloteDAO {
 
     @Query("SELECT * FROM pilote ORDER BY nom ASC")
     List<Pilote> getAllPilotes();
+
+    @Query("DELETE FROM pilote WHERE id = :id")
+    void deletePiloteById(int id);
+
+    @Query("DELETE FROM pilote")
+    void deleteAllPilotes();
 }

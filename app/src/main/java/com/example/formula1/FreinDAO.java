@@ -29,4 +29,7 @@ public interface FreinDAO {
     @Query("DELETE FROM frein WHERE id = :id")
     void deleteFreinById(int id);
 
+    @Query("DELETE FROM frein")
+    void deleteAllFrein();
+
 }

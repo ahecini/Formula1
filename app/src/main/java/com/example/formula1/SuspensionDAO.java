@@ -28,4 +28,7 @@ public interface SuspensionDAO {
 
     @Query("DELETE FROM suspension WHERE id = :id")
     void deleteSuspensionById(int id);
+
+    @Query("DELETE FROM suspension")
+    void deleteAllSuspension();
 }

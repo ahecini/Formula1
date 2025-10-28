@@ -21,7 +21,7 @@ public class Event_1 extends AppCompatActivity {
 
     private String[] tireType;
 
-    private int voitureId;
+    private int piloteId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,8 +29,8 @@ public class Event_1 extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_event1);
 
-        voitureId = getIntent().getIntExtra("VoitureId", -1);
-        if(voitureId == -1) {
+        piloteId = getIntent().getIntExtra("PiloteId", -1);
+        if(piloteId == -1) {
             finish();
             return;
         }
@@ -52,25 +52,50 @@ public class Event_1 extends AppCompatActivity {
     public void changeTire(View view){
         Executors.newSingleThreadExecutor().execute(() -> {
             AppDataBase db = AppDataBase.getInstance(getApplicationContext());
+            PiloteEtVoiture data = db.piloteDAO().getPiloteAvecVoitureById(piloteId);
+            int voitureId = data.voitureAvecPiece.voiture.getId();
+            int temps = data.pilote.getTemps();
+            int carburant = data.voitureAvecPiece.voiture.getCarburant();
+
             db.voitureDAO().updatePneuById(voitureId, tireType[3]);
+            db.piloteDAO().updateTempsById(piloteId, temps+3000+60000);
+            db.voitureDAO().updateCarburantById(voitureId, 100);
+
 
             runOnUiThread(()->{
                Intent intent = new Intent(Event_1.this, Event_2.class);
-               intent.putExtra("VoitureId", voitureId);
+               intent.putExtra("piloteId", piloteId);
                startActivity(intent);
             });
         });
     }
 
     public void keepTire(View view){
-        Intent intent = new Intent(Event_1.this, Event_2.class);
-        intent.putExtra("VoitureId", voitureId);
-        startActivity(intent);
+        Executors.newSingleThreadExecutor().execute(()->{
+            AppDataBase db = AppDataBase.getInstance(getApplicationContext());
+            PiloteEtVoiture data = db.piloteDAO().getPiloteAvecVoitureById(piloteId);
+            int voitureId = data.voitureAvecPiece.voiture.getId();
+            int temps = data.pilote.getTemps();
+            int carburant = data.voitureAvecPiece.voiture.getCarburant();
+
+
+            db.piloteDAO().updateTempsById(piloteId, temps+60000);
+            db.voitureDAO().updateCarburantById(voitureId, carburant-25);
+
+            runOnUiThread(()->{
+                Intent intent = new Intent(Event_1.this, Event_2.class);
+                intent.putExtra("piloteId", piloteId);
+                startActivity(intent);
+            });
+        });
     }
 
     private void loadVoitureData(){
         Executors.newSingleThreadExecutor().execute(() -> {
             AppDataBase db = AppDataBase.getInstance(getApplicationContext());
+            PiloteEtVoiture data = db.piloteDAO().getPiloteAvecVoitureById(piloteId);
+            int voitureId = data.voitureAvecPiece.voiture.getId();
+
             VoitureAvecPiece voitureAvecPiece = db.voitureDAO().getVoitureAvecPieceById(voitureId);
 
             if(voitureAvecPiece == null) {

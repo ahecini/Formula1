@@ -11,6 +11,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.concurrent.Executors;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -18,9 +20,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.ecran_titre);
-
-        startbutton = findViewById(R.id.buttonValidate);
-        quitbutton = findViewById(R.id.buttonQuit);
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -30,16 +29,19 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private Button startbutton;
-    private Button quitbutton;
-
     public void close(View view){
         finish();
     }
 
     public void start(View view) {
-        Intent intent = new Intent(this, DraftActivity.class);
-        startActivity(intent);
-    }
+        Executors.newSingleThreadExecutor().execute(() -> {
+            AppDataBase db = AppDataBase.getInstance(getApplicationContext());
+            db.clearAllTables();
 
+            runOnUiThread(()->{
+                Intent intent = new Intent(this, DraftActivity.class);
+                startActivity(intent);
+            });
+        });
+    }
 }

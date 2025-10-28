@@ -5,6 +5,8 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
+import java.util.concurrent.Executors;
+
 @Database(
         entities = {Voiture.class, Moteur.class, Frein.class, Boite.class, Suspension.class, Pilote.class},
         version = 2,
@@ -30,5 +32,11 @@ public abstract class AppDataBase extends RoomDatabase {
                     .build();
         }
         return INSTANCE;
+    }
+
+    public void clearDatabase() {
+        Executors.newSingleThreadExecutor().execute(() -> {
+            this.clearAllTables();
+        });
     }
 }

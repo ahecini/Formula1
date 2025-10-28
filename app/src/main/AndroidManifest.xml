@@ -12,8 +12,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Formula1">
         <activity
-            android:name="RecapPiloteVoitureActivity"
-            android:exported="false"/>
+            android:name=".Podium"
+            android:exported="false" />
+        <activity
+            android:name=".RecapPiloteVoitureActivity"
+            android:exported="false" />
         <activity
             android:name=".EntrainementActivity"
             android:exported="false" />

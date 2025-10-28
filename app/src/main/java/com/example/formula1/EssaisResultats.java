@@ -13,6 +13,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.Random;
 import java.util.concurrent.Executors;
 
 public class EssaisResultats extends AppCompatActivity {
@@ -30,7 +31,9 @@ public class EssaisResultats extends AppCompatActivity {
     private TextView textViewStratChoice;
     private TextView textViewConsoChoice;
 
-    private int voitureId;
+    private String[] name;
+
+    private int piloteId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +41,8 @@ public class EssaisResultats extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_essais_resultats);
 
-        voitureId = getIntent().getIntExtra("VoitureId", -1);
-        if (voitureId == -1) {
+        piloteId = getIntent().getIntExtra("piloteId", -1);
+        if (piloteId == -1) {
             finish();
             return;
         }
@@ -54,6 +57,8 @@ public class EssaisResultats extends AppCompatActivity {
 
         textViewStratChoice = findViewById(R.id.textViewStratChoice);
         textViewConsoChoice = findViewById(R.id.textViewConsoChoice);
+
+        name = getResources().getStringArray(R.array.names);
 
         loadVoitureData();
 
@@ -71,7 +76,7 @@ public class EssaisResultats extends AppCompatActivity {
     public void validate (View view){
         Intent intent = new Intent(this, Event_1.class);
 
-        intent.putExtra("VoitureId", voitureId);
+        intent.putExtra("PiloteId", piloteId);
 
         startActivity(intent);
     }
@@ -79,6 +84,8 @@ public class EssaisResultats extends AppCompatActivity {
     private void loadVoitureData(){
         Executors.newSingleThreadExecutor().execute(() -> {
             AppDataBase db = AppDataBase.getInstance(getApplicationContext());
+            PiloteEtVoiture data = db.piloteDAO().getPiloteAvecVoitureById(piloteId);
+            int voitureId = data.voitureAvecPiece.voiture.getId();
             VoitureAvecPiece voitureAvecPiece = db.voitureDAO().getVoitureAvecPieceById(voitureId);
 
             if (voitureAvecPiece == null) {
@@ -96,5 +103,41 @@ public class EssaisResultats extends AppCompatActivity {
                 textViewActualFuel.setText(voitureAvecPiece.voiture.getCarburant() + " %");
             });
         });
+    }
+
+    private void generatePilot(){
+        Executors.newSingleThreadExecutor().execute(() -> {
+            AppDataBase db = AppDataBase.getInstance(getApplicationContext());
+            for (int i = 0; i < 20 ; i++) {
+                Pilote pilote = new Pilote(name[i], variation(), variation(), variation(), variation());
+
+                long piloteId = db.piloteDAO().insert(pilote);
+
+                db.piloteDAO().updateTempsById((int)piloteId, randomTemps());
+
+            }
+        });
+    }
+
+    private int variation (){
+        int value;
+        Random random = new Random();
+
+        value = random.nextInt(5);
+
+        if(value == 0){
+            value = 1;
+        }
+
+        return value;
+    }
+
+    private int randomTemps(){
+        int value;
+        Random random = new Random();
+
+        value = random.nextInt(180000);
+
+        return value;
     }
 }
