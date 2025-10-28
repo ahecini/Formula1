@@ -2,6 +2,7 @@ package com.example.formula1;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -68,6 +69,11 @@ public class RecapPiloteVoitureActivity extends AppCompatActivity {
         Executors.newSingleThreadExecutor().execute(() -> {
             AppDataBase db = AppDataBase.getInstance(getApplicationContext());
             PiloteEtVoiture data = db.piloteDAO().getPiloteAvecVoitureById(piloteId);
+
+            if(data == null || data.pilote == null || data.voitureAvecPiece == null){
+                Log.e("RecapPiloteVoitureActivity", "Données du pilote " + piloteId + " introuvables");
+                return;
+            }
 
             runOnUiThread(() -> {
                 turnValue.setText(String.valueOf(data.pilote.getVirage()));
