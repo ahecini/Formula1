@@ -17,30 +17,35 @@ import androidx.core.view.WindowInsetsCompat;
 import java.util.Random;
 public class CarActivity extends AppCompatActivity {
 
+    private Spinner spinnerBrake;
+    private Spinner spinnerGear;
+    private Spinner spinnerMotor;
+    private Spinner spinnerSuspension;
+
+    private Switch switchLegalBrake;
+    private Switch switchLegalGear;
+    private Switch switchLegalMotor;
+    private Switch switchLegalSuspension;
+
+    private int piloteId;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_car);
 
-        TextView textViewCar = findViewById(R.id.textViewCar);
-        TextView textViewBrake = findViewById(R.id.textViewBrake);
-        TextView textViewGear = findViewById(R.id.textViewGear);
-        TextView textViewMotor = findViewById(R.id.textViewMotor);
-        TextView textViewSuspension = findViewById(R.id.textViewSuspension);
-
         spinnerBrake = findViewById(R.id.spinnerTurn);
         spinnerGear = findViewById(R.id.spinnerAdapt);
         spinnerMotor = findViewById(R.id.spinnerReact);
         spinnerSuspension = findViewById(R.id.spinnerControl);
 
-        validate = findViewById(R.id.buttonValidate);
-        quit = findViewById(R.id.buttonQuit);
-
         switchLegalBrake = findViewById(R.id.switchLegalBrake);
         switchLegalGear = findViewById(R.id.switchLegalGear);
         switchLegalMotor = findViewById(R.id.switchLegalMotor);
         switchLegalSuspension = findViewById(R.id.switchLegalSuspension);
+
+        piloteId = getIntent().getIntExtra("piloteId", -1);
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -49,19 +54,6 @@ public class CarActivity extends AppCompatActivity {
         });
     }
 
-    private Spinner spinnerBrake;
-    private Spinner spinnerGear;
-    private Spinner spinnerMotor;
-    private Spinner spinnerSuspension;
-
-    private Button validate;
-    private Button quit;
-
-    private Switch switchLegalBrake;
-    private Switch switchLegalGear;
-    private Switch switchLegalMotor;
-    private Switch switchLegalSuspension;
-
     public void close(View view){
         finish();
     }
@@ -69,15 +61,10 @@ public class CarActivity extends AppCompatActivity {
     public void validate(View view) {
         Intent intent = new Intent(this, CarRecapActivity.class);
 
-        String brakeTxt = spinnerBrake.getSelectedItem().toString();
-        String gearTxt = spinnerGear.getSelectedItem().toString();
-        String motorTxt = spinnerMotor.getSelectedItem().toString();
-        String suspensionTxt = spinnerSuspension.getSelectedItem().toString();
-
-        int brake = Integer.parseInt(Character.toString(brakeTxt.charAt(brakeTxt.length()-1)));
-        int gear = Integer.parseInt(Character.toString(gearTxt.charAt(gearTxt.length()-1)));
-        int motor = Integer.parseInt(Character.toString(motorTxt.charAt(motorTxt.length()-1)));
-        int suspension = Integer.parseInt(Character.toString(suspensionTxt.charAt(suspensionTxt.length()-1)));
+        int brake = Integer.parseInt(spinnerBrake.getSelectedItem().toString());
+        int gear = Integer.parseInt(spinnerGear.getSelectedItem().toString());
+        int motor = Integer.parseInt(spinnerMotor.getSelectedItem().toString());
+        int suspension = Integer.parseInt(spinnerSuspension.getSelectedItem().toString());
 
         brake = variation(brake);
         gear = variation(gear);
@@ -98,9 +85,18 @@ public class CarActivity extends AppCompatActivity {
         }
 
         intent.putExtra("Brake", brake);
+        intent.putExtra("BrakeIsIllegal", switchLegalBrake.isChecked());
+
         intent.putExtra("Gear", gear);
+        intent.putExtra("GearIsIllegal", switchLegalGear.isChecked());
+
         intent.putExtra("Motor", motor);
+        intent.putExtra("MotorIsIllegal", switchLegalMotor.isChecked());
+
         intent.putExtra("Suspension", suspension);
+        intent.putExtra("SuspensionIsIllegal", switchLegalSuspension.isChecked());
+
+        intent.putExtra("PiloteId", piloteId);
 
         startActivity(intent);
     }

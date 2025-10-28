@@ -12,11 +12,16 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class EntrainementActivity extends AppCompatActivity {
 
+    private int piloteId;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_entrainement);
+
+        piloteId = getIntent().getIntExtra("piloteId", -1);
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -29,6 +34,7 @@ public class EntrainementActivity extends AppCompatActivity {
 
     public void validate(View view) {
         Intent intent = new Intent(this, RecapPiloteVoitureActivity.class);
+        intent.putExtra("piloteId", piloteId);
         startActivity(intent);
     }
 }

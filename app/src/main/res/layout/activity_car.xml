@@ -30,7 +30,7 @@
         android:layout_height="48dp"
         android:layout_marginStart="41dp"
         android:layout_marginTop="10dp"
-        android:entries="@array/skillsLevel"
+        android:entries="@array/attributeNumber"
         android:scrollbarSize="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewBrake" />
@@ -90,7 +90,7 @@
         android:layout_height="48dp"
         android:layout_marginStart="42dp"
         android:layout_marginTop="10dp"
-        android:entries="@array/skillsLevel"
+        android:entries="@array/attributeNumber"
         android:scrollbarSize="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewSuspension" />
@@ -101,7 +101,7 @@
         android:layout_height="48dp"
         android:layout_marginStart="41dp"
         android:layout_marginTop="12dp"
-        android:entries="@array/skillsLevel"
+        android:entries="@array/attributeNumber"
         android:scrollbarSize="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewGear" />
@@ -112,7 +112,7 @@
         android:layout_height="48dp"
         android:layout_marginStart="42dp"
         android:layout_marginTop="10dp"
-        android:entries="@array/skillsLevel"
+        android:entries="@array/attributeNumber"
         android:scrollbarSize="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewMotor" />

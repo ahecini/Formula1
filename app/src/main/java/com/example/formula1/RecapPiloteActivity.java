@@ -66,10 +66,12 @@ public class RecapPiloteActivity extends AppCompatActivity {
             AppDataBase db = AppDataBase.getInstance(getApplicationContext());
             long piloteId = db.piloteDAO().insert(pilote);
             intent.putExtra("piloteId", (int)piloteId);
+
+            runOnUiThread(() -> {
+                startActivity(intent);
+            });
         });
 
-        runOnUiThread(() -> {
-            startActivity(intent);
-        });
+
     }
 }

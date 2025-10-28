@@ -3,6 +3,7 @@ package com.example.formula1;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Transaction;
 import androidx.room.Update;
 
 import java.util.List;
@@ -12,6 +13,10 @@ public interface PiloteDAO {
 
     @Insert
     long insert (Pilote pilote);
+
+    @Transaction
+    @Query("SELECT * FROM pilote WHERE id = :id")
+    PiloteEtVoiture getPiloteAvecVoitureById(int id);
 
     @Query("SELECT * FROM pilote WHERE id = :id")
     Pilote getPiloteById(int id);

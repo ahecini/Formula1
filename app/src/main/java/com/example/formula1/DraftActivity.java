@@ -50,12 +50,13 @@ public class DraftActivity extends AppCompatActivity {
 
     public void validate(View view) {
 
-        if (editTextName.getText().toString().isEmpty()) {
+        String nom = editTextName.getText().toString().trim();
+
+        if (nom.isEmpty()) {
             Toast.makeText(this, "Veuillez saisir un nom pour le pilote.", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        String nom = editTextName.getText().toString();
         int virage = Integer.parseInt(spinnerTurn.getSelectedItem().toString());
         int adaptabilite = Integer.parseInt(spinnerAdapt.getSelectedItem().toString());
         int controle = Integer.parseInt(spinnerControl.getSelectedItem().toString());

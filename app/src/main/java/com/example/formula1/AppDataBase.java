@@ -25,7 +25,9 @@ public abstract class AppDataBase extends RoomDatabase {
             INSTANCE = Room.databaseBuilder(
                     context.getApplicationContext(),
                     AppDataBase.class,
-                    "formula1_database").build();
+                    "formula1_database")
+                    .fallbackToDestructiveMigration()
+                    .build();
         }
         return INSTANCE;
     }
