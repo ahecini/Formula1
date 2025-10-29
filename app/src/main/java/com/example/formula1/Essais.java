@@ -169,7 +169,7 @@ public class Essais extends AppCompatActivity {
         majVoiture(carburant, pneu);
     }
 
-    public void majVoiture(int carburant, String pneu){
+    private void majVoiture(int carburant, String pneu){
         Executors.newSingleThreadExecutor().execute(() -> {
             AppDataBase db = AppDataBase.getInstance(getApplicationContext());
             PiloteEtVoiture data = db.piloteDAO().getPiloteAvecVoitureById(piloteId);
@@ -177,11 +177,55 @@ public class Essais extends AppCompatActivity {
             data.voitureAvecPiece.voiture.setPneu(pneu);
             data.voitureAvecPiece.voiture.setCarburant(carburant);
 
+            int gear = data.voitureAvecPiece.boite.getValeur();
+            int controle = data.pilote.getControle();
+            int brake = data.voitureAvecPiece.frein.getValeur();
+            int suspension = data.voitureAvecPiece.suspension.getValeur();
+            int virage = data.pilote.getVirage();
+            int motor = data.voitureAvecPiece.moteur.getValeur();
+            int adapt = data.pilote.getAdaptabilite();
+            int reac = data.pilote.getReactivite();
+            int strat = seekBarStrat.getProgress()+1;
+
+            int temps = calculTemps(gear, controle, brake, suspension, virage, motor, adapt, reac, strat,pneu);
+
+            data.pilote.setTemps(temps);
+
             runOnUiThread(() -> {
                 Intent intent = new Intent(Essais.this, EssaisResultats.class);
                 intent.putExtra("piloteId", piloteId);
                 startActivity(intent);
             });
         });
+    }
+
+    private int calculTemps(int gear, int controle, int brake, int suspension, int virage, int motor,
+                            int adapt, int reac, int strat, String pneu){
+
+        int pneuValeur;
+
+        switch(pneu){
+            case"Soft":
+                pneuValeur = 20000;
+                break;
+            case "Medium":
+                pneuValeur = 10000;
+                break;
+            case"Hard":
+                pneuValeur = 5000;
+                break;
+            case"Water":
+                pneuValeur = 1000;
+                break;
+            default:
+                pneuValeur = 0;
+                break;
+        }
+
+        int temps = (((gear + controle) - brake) +
+                ((suspension + virage) * strat) +
+                ((motor + adapt + reac) * strat)) * pneuValeur;
+
+        return temps;
     }
 }

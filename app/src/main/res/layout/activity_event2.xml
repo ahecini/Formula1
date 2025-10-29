@@ -33,7 +33,7 @@
         android:layout_width="339dp"
         android:layout_height="217dp"
         android:layout_marginBottom="60dp"
-        android:text="Bla bla y'a un accident. On en profite pour faire un arrêt au stand ?"
+        android:text="Un violent accrochage vient d’éclater dans le premier virage ! Les débris s’éparpillent sur la trajectoire, et les commissaires agitent déjà les drapeaux jaunes. La course est neutralisée : la voiture de sécurité entre en piste. Les pilotes ralentissent, et les stands s’animent. C’est le moment idéal pour un arrêt stratégique : changer les pneus, ajuster l’aérodynamique ou faire le plein sans perdre de position."
         app:layout_constraintBottom_toTopOf="@+id/textViewCarState"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

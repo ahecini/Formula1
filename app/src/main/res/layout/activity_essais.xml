@@ -62,23 +62,23 @@
         android:id="@+id/buttonValidateQualif"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="68dp"
-        android:layout_marginBottom="80dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginBottom="88dp"
         android:onClick="validate"
         android:text="@string/Validate"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/buttonQuitQualif" />
 
     <Button
         android:id="@+id/buttonQuitQualif"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="84dp"
-        android:layout_marginBottom="80dp"
+        android:layout_marginStart="88dp"
+        android:layout_marginBottom="88dp"
         android:onClick="quit"
         android:text="@string/Quit"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/buttonValidateQualif" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <SeekBar
         android:id="@+id/seekBarFuel"

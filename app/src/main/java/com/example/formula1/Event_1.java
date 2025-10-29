@@ -39,7 +39,6 @@ public class Event_1 extends AppCompatActivity {
         textViewActualFuel2 = findViewById(R.id.textViewActualFuel2);
         tireType = getResources().getStringArray(R.array.tireType);
 
-
         loadVoitureData();
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
@@ -77,7 +76,6 @@ public class Event_1 extends AppCompatActivity {
             int voitureId = data.voitureAvecPiece.voiture.getId();
             int temps = data.pilote.getTemps();
             int carburant = data.voitureAvecPiece.voiture.getCarburant();
-
 
             db.piloteDAO().updateTempsById(piloteId, temps+60000);
             db.voitureDAO().updateCarburantById(voitureId, carburant-25);

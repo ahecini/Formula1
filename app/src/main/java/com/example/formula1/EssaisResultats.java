@@ -76,6 +76,8 @@ public class EssaisResultats extends AppCompatActivity {
     public void validate (View view){
         Intent intent = new Intent(this, Event_1.class);
 
+        generatePilot();
+
         intent.putExtra("PiloteId", piloteId);
 
         startActivity(intent);
@@ -114,7 +116,6 @@ public class EssaisResultats extends AppCompatActivity {
                 long piloteId = db.piloteDAO().insert(pilote);
 
                 db.piloteDAO().updateTempsById((int)piloteId, randomTemps());
-
             }
         });
     }
