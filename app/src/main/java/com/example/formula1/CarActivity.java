@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,7 +15,10 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.HashSet;
 import java.util.Random;
+import java.util.Set;
+
 public class CarActivity extends AppCompatActivity {
 
     private Spinner spinnerBrake;
@@ -66,6 +70,11 @@ public class CarActivity extends AppCompatActivity {
         int motor = Integer.parseInt(spinnerMotor.getSelectedItem().toString());
         int suspension = Integer.parseInt(spinnerSuspension.getSelectedItem().toString());
 
+        if(!verifAttributDiff(brake, gear, motor, suspension)){
+            Toast.makeText(this, "Les valeurs doivent être différentes.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         brake = variation(brake);
         gear = variation(gear);
         motor = variation(motor);
@@ -111,5 +120,16 @@ public class CarActivity extends AppCompatActivity {
         }
 
         return value;
+    }
+
+    private boolean verifAttributDiff(int brake, int gear, int motor, int suspension){
+        Set<Integer> attributs = new HashSet<>();
+
+        attributs.add(brake);
+        attributs.add(gear);
+        attributs.add(motor);
+        attributs.add(suspension);
+
+        return attributs.size() == 4;
     }
 }

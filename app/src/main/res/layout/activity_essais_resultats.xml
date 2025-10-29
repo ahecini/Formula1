@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="164dp"
         android:layout_marginBottom="20dp"
-        android:text="TextView"
+        android:text="resultat qualif"
         app:layout_constraintBottom_toTopOf="@+id/textViewTemps"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -213,19 +213,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="52dp"
-        android:layout_marginBottom="24dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/textViewPosition"
+        android:layout_marginBottom="56dp"
+        android:text="Temps"
+        app:layout_constraintBottom_toTopOf="@+id/textViewBoite"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/textViewPosition"
+        android:id="@+id/textViewActualTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginStart="164dp"
         android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/textViewBoite"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintBottom_toBottomOf="@+id/textViewTemps"
+        app:layout_constraintStart_toEndOf="@+id/textViewTemps"
+        app:layout_constraintTop_toTopOf="@+id/textViewTemps"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

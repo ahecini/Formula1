@@ -1,7 +1,5 @@
 package com.example.formula1;
 
-import static android.view.View.inflate;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,7 +30,7 @@ public class PodiumAdapter extends RecyclerView.Adapter<PodiumAdapter.PodiumView
     @Override
     public void onBindViewHolder(@NonNull PodiumViewHolder holder, int position) {
         Pilote pilote = pilotes.get(position);
-        holder.bind(pilote, position + 1); // On passe la position (pour le classement)
+        holder.bind(pilote, position + 1);
     }
 
     @Override
@@ -47,7 +45,7 @@ public class PodiumAdapter extends RecyclerView.Adapter<PodiumAdapter.PodiumView
 
         public PodiumViewHolder(@NonNull View itemView) {
             super(itemView);
-            textViewPosition = itemView.findViewById(R.id.textViewPosition);
+            textViewPosition = itemView.findViewById(R.id.textViewActualTime);
             textViewPiloteName = itemView.findViewById(R.id.textViewPiloteName);
             textViewPiloteTime = itemView.findViewById(R.id.textViewPiloteTime);
         }

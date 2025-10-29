@@ -13,13 +13,14 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.Locale;
 import java.util.Random;
 import java.util.concurrent.Executors;
 
 public class EssaisResultats extends AppCompatActivity {
 
     private TextView textViewTemps;
-    private TextView textViewPosition;
+    private TextView actualTime;
 
     private TextView textViewMotorAttribut;
     private TextView textViewGearAttribut;
@@ -46,6 +47,8 @@ public class EssaisResultats extends AppCompatActivity {
             finish();
             return;
         }
+
+        actualTime = findViewById(R.id.textViewActualTime);
 
         textViewBrakeAttribut = findViewById(R.id.textViewBrakeAttribut);
         textViewGearAttribut = findViewById(R.id.textViewGearAttribut);
@@ -96,6 +99,8 @@ public class EssaisResultats extends AppCompatActivity {
             }
 
             runOnUiThread(() -> {
+                actualTime.setText(formatTime(data.pilote.getTemps()));
+
                 textViewBrakeAttribut.setText(String.valueOf(voitureAvecPiece.frein.getValeur()));
                 textViewGearAttribut.setText(String.valueOf(voitureAvecPiece.boite.getValeur()));
                 textViewSuspensionAttribut.setText(String.valueOf(voitureAvecPiece.suspension.getValeur()));
@@ -140,5 +145,12 @@ public class EssaisResultats extends AppCompatActivity {
         value = random.nextInt(180000);
 
         return value;
+    }
+
+    private String formatTime(int millis) {
+        int minutes = (millis / 1000) / 60;
+        int seconds = (millis / 1000) % 60;
+        int milliseconds = millis % 1000;
+        return String.format(Locale.getDefault(), "%02d:%02d.%03d", minutes, seconds, milliseconds);
     }
 }

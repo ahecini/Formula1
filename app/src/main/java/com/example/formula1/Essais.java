@@ -12,6 +12,7 @@ import android.content.Intent;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.Locale;
 import java.util.concurrent.Executors;
 
 public class Essais extends AppCompatActivity {
@@ -174,8 +175,8 @@ public class Essais extends AppCompatActivity {
             AppDataBase db = AppDataBase.getInstance(getApplicationContext());
             PiloteEtVoiture data = db.piloteDAO().getPiloteAvecVoitureById(piloteId);
 
-            data.voitureAvecPiece.voiture.setPneu(pneu);
-            data.voitureAvecPiece.voiture.setCarburant(carburant);
+            db.voitureDAO().updatePneuById(data.voitureAvecPiece.voiture.getId(), pneu);
+            db.voitureDAO().updateCarburantById(data.voitureAvecPiece.voiture.getId(), carburant);
 
             int gear = data.voitureAvecPiece.boite.getValeur();
             int controle = data.pilote.getControle();
@@ -188,8 +189,7 @@ public class Essais extends AppCompatActivity {
             int strat = seekBarStrat.getProgress()+1;
 
             int temps = calculTemps(gear, controle, brake, suspension, virage, motor, adapt, reac, strat,pneu);
-
-            data.pilote.setTemps(temps);
+            db.piloteDAO().updateTempsById(piloteId, temps);
 
             runOnUiThread(() -> {
                 Intent intent = new Intent(Essais.this, EssaisResultats.class);
@@ -206,16 +206,16 @@ public class Essais extends AppCompatActivity {
 
         switch(pneu){
             case"Soft":
-                pneuValeur = 20000;
+                pneuValeur = 2000;
                 break;
             case "Medium":
-                pneuValeur = 10000;
+                pneuValeur = 1000;
                 break;
             case"Hard":
-                pneuValeur = 5000;
+                pneuValeur = 500;
                 break;
             case"Water":
-                pneuValeur = 1000;
+                pneuValeur = 100;
                 break;
             default:
                 pneuValeur = 0;
