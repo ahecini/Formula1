@@ -14,4 +14,41 @@
     <string name="Strategy">Strategie</string>
     <string name="Consumption">Consommation</string>
     <string name="Car">Voiture</string>
+    <string name="Cancel">Annuler</string>
+    <string name="Name">Nom</string>
+    <string name="Reaction">Réactivité</string>
+    <string name="Turn">Virage</string>
+    <string name="Adapt">Adaptabilité</string>
+    <string name="Control">Contrôle</string>
+    <string name="Qualif_result">Résultats des essais</string>
+    <string name="place">Position</string>
+    <string name="Coming_rain">La pluie arrive</string>
+    <string name="Change_tires">Changer les pneus</string>
+    <string name="Keepp_tires">Garder les pneus</string>
+    <string name="Crash">Accident</string>
+    <string name="Car_State">État de la voiture</string>
+    <string name="Pit_stop">Arrêt au stand</string>
+    <string name="Stay">Rester</string>
+    <string name="Overcome">Tenter de dépasser</string>
+    <string name="Safe">Jouer la sécurité</string>
+    <string name="Occasion">Opportunité</string>
+    <string name="Rain_text">
+        Le ciel s’assombrit soudain, et les premières gouttes commencent à tomber sur l’asphalte
+        brûlant. Les pilotes, concentrés, sentent le vent changer. La piste, encore sèche, va
+        bientôt devenir un terrain glissant et imprévisible. Les ingénieurs s’agitent dans les
+        stands :"Pneus pluie, ou on garde ?"
+    </string>
+    <string name="Crash_text">
+        Un violent accrochage vient d’éclater dans le premier virage ! Les débris s’éparpillent sur
+        la trajectoire, et les commissaires agitent déjà les drapeaux jaunes. La course est
+        neutralisée : la voiture de sécurité entre en piste. Les pilotes ralentissent, et les
+        stands s’animent. C’est le moment idéal pour un arrêt stratégique : changer les pneus,
+        ajuster l’aérodynamique ou faire le plein sans perdre de position.
+    </string>
+    <string name="Overcome_text">
+        Ton rival devant toi montre un léger signe de faiblesse : il sort large dans le virage,
+        laissant un espace étroit entre sa voiture et le bord de la piste. Une opportunité de
+        dépassement se dessine, mais la marge est minuscule. Si tu oses, tu pourrais gagner une
+        place cruciale… ou finir dans le gravier.
+    </string>
 </resources>

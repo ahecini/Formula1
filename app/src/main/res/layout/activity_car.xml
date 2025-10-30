@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:minHeight="48dp"
     tools:context=".CarActivity">
 
     <TextView
@@ -12,15 +13,15 @@
         android:layout_width="203dp"
         android:layout_height="91dp"
         android:layout_marginStart="140dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="60dp"
         android:layout_marginEnd="165dp"
         android:fontFamily="@font/racing_sans_one"
         android:foregroundTint="#FDFBFB"
-        android:text="Car info"
+        android:text="@string/Car"
         android:textColor="#DC0C0C"
         android:textSize="35sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.163"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -126,7 +127,7 @@
         android:backgroundTint="#44FB1B"
         android:fontFamily="@font/racing_sans_one"
         android:onClick="validate"
-        android:text="Valider"
+        android:text="@string/Validate"
         android:textColor="#140D0D"
         android:textColorLink="#2DE615"
         android:textSize="24sp"
@@ -143,7 +144,7 @@
         android:backgroundTint="#E20E0E"
         android:fontFamily="@font/racing_sans_one"
         android:onClick="close"
-        android:text="Annuler"
+        android:text="@string/Cancel"
         android:textColor="#070707"
         android:textColorLink="#E61D1D"
         android:textSize="24sp"
@@ -175,7 +176,7 @@
     <Switch
         android:id="@+id/switchLegalBrake"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:layout_marginStart="75dp"
         android:text="@string/Illegal"
         app:layout_constraintBottom_toBottomOf="@+id/spinnerTurn"
@@ -185,7 +186,7 @@
     <Switch
         android:id="@+id/switchLegalGear"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:layout_marginStart="75dp"
         android:text="@string/Illegal"
         app:layout_constraintBottom_toBottomOf="@+id/spinnerAdapt"
@@ -195,7 +196,7 @@
     <Switch
         android:id="@+id/switchLegalMotor"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:layout_marginStart="75dp"
         android:text="@string/Illegal"
         app:layout_constraintBottom_toBottomOf="@+id/spinnerReact"
@@ -205,7 +206,7 @@
     <Switch
         android:id="@+id/switchLegalSuspension"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:layout_marginStart="75dp"
         android:text="@string/Illegal"
         app:layout_constraintBottom_toBottomOf="@+id/spinnerControl"

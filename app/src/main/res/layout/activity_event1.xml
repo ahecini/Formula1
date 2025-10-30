@@ -12,7 +12,7 @@
         android:layout_width="376dp"
         android:layout_height="171dp"
         android:layout_marginBottom="84dp"
-        android:text="Le ciel s’assombrit soudain, et les premières gouttes commencent à tomber sur l’asphalte brûlant. Les pilotes, concentrés, sentent le vent changer. La piste, encore sèche, va bientôt devenir un terrain glissant et imprévisible. Les ingénieurs s’agitent dans les stands : &quot;Pneus pluie, ou on garde ?&quot;"
+        android:text="@string/Rain_text"
         app:layout_constraintBottom_toTopOf="@+id/buttonChangeTire"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.542"
@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="36dp"
         android:onClick="changeTire"
-        android:text="Change Tires"
+        android:text="@string/Change_tires"
         app:layout_constraintBottom_toTopOf="@+id/buttonKeepTire"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -35,7 +35,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="64dp"
         android:onClick="keepTire"
-        android:text="Keep Tire"
+        android:text="@string/Keepp_tires"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -97,7 +97,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="68dp"
-        android:text="la pluie arrive"
+        android:text="@string/Coming_rain"
         app:layout_constraintBottom_toTopOf="@+id/textViewActualTireText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

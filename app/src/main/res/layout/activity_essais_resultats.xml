@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="164dp"
         android:layout_marginBottom="20dp"
-        android:text="resultat qualif"
+        android:text="@string/Qualif_result"
         app:layout_constraintBottom_toTopOf="@+id/textViewTemps"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -98,7 +98,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="48dp"
         android:layout_marginBottom="36dp"
-        android:text="moto"
+        android:text="@string/Motor"
         app:layout_constraintBottom_toTopOf="@+id/textViewSuspension2"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -214,7 +214,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="52dp"
         android:layout_marginBottom="56dp"
-        android:text="Position"
+        android:text="@string/place"
         app:layout_constraintBottom_toTopOf="@+id/textViewBoite"
         app:layout_constraintStart_toStartOf="parent" />
 
