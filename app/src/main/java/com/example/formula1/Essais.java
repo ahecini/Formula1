@@ -35,7 +35,6 @@ public class Essais extends AppCompatActivity {
     private int piloteId;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,11 +62,11 @@ public class Essais extends AppCompatActivity {
         consoStrat = getResources().getStringArray(R.array.consoStrat);
         stratType = getResources().getStringArray(R.array.stratType);
 
-        seekBarTire.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
+        seekBarTire.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
 
-                if(fromUser){
+                if (fromUser) {
                     textViewChoseTires.setText(tireType[progress]);
                 }
             }
@@ -101,11 +100,11 @@ public class Essais extends AppCompatActivity {
 
             }
         });
-        seekBarConso.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
+        seekBarConso.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                if(fromUser){
+                if (fromUser) {
                     textViewChoseConso.setText(consoStrat[progress]);
                 }
             }
@@ -120,11 +119,11 @@ public class Essais extends AppCompatActivity {
 
             }
         });
-        seekBarStrat.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
+        seekBarStrat.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                if(fromUser){
+                if (fromUser) {
                     textViewChoseStrat.setText(stratType[progress]);
                 }
             }
@@ -159,18 +158,18 @@ public class Essais extends AppCompatActivity {
         });
     }
 
-    public void quit(View view){
+    public void quit(View view) {
         finish();
     }
 
-    public void validate(View view){
+    public void validate(View view) {
         int carburant = Integer.parseInt(fuelStrat[seekBarFuel.getProgress()]);
         String pneu = tireType[seekBarTire.getProgress()];
 
         majVoiture(carburant, pneu);
     }
 
-    private void majVoiture(int carburant, String pneu){
+    private void majVoiture(int carburant, String pneu) {
         Executors.newSingleThreadExecutor().execute(() -> {
             AppDataBase db = AppDataBase.getInstance(getApplicationContext());
             PiloteEtVoiture data = db.piloteDAO().getPiloteAvecVoitureById(piloteId);
@@ -186,10 +185,10 @@ public class Essais extends AppCompatActivity {
             int motor = data.voitureAvecPiece.moteur.getValeur();
             int adapt = data.pilote.getAdaptabilite();
             int reac = data.pilote.getReactivite();
-            int strat = seekBarStrat.getProgress()+1;
+            int strat = seekBarStrat.getProgress() + 1;
 
-            int temps = calculTemps(gear, controle, brake, suspension, virage, motor, adapt, reac, strat,pneu);
-            db.piloteDAO().updateTempsById(piloteId, temps);
+            int position = calculPosition(gear, controle, brake, suspension, virage, motor, adapt, reac, strat, pneu);
+            db.piloteDAO().updatePositionById(piloteId, position);
 
             runOnUiThread(() -> {
                 Intent intent = new Intent(Essais.this, EssaisResultats.class);
@@ -199,33 +198,50 @@ public class Essais extends AppCompatActivity {
         });
     }
 
-    private int calculTemps(int gear, int controle, int brake, int suspension, int virage, int motor,
-                            int adapt, int reac, int strat, String pneu){
+    private int calculPosition(int gear, int controle, int brake, int suspension, int virage, int motor,
+                               int adapt, int reac, int strat, String pneu) {
+        // Pondération des caractéristiques
+        int scoreGear = gear * 10;
+        int scoreControle = controle * 15;
+        int scoreBrake = brake * 10;
+        int scoreSuspension = suspension * 10;
+        int scoreVirage = virage * 15;
+        int scoreMotor = motor * 20;
+        int scoreAdapt = adapt * 10;
+        int scoreReac = reac * 15;
 
+        // Pondération de la stratégie
+        int scoreStrat = strat * 5;
+
+        // Pondération des pneus
         int pneuValeur;
-
-        switch(pneu){
-            case"Soft":
-                pneuValeur = 2000;
+        switch (pneu) {
+            case "Soft":
+                pneuValeur = 20;
                 break;
             case "Medium":
-                pneuValeur = 1000;
+                pneuValeur = 15;
                 break;
-            case"Hard":
-                pneuValeur = 500;
+            case "Hard":
+                pneuValeur = 10;
                 break;
-            case"Water":
-                pneuValeur = 100;
+            case "Water":
+                pneuValeur = 5;
                 break;
             default:
                 pneuValeur = 0;
                 break;
         }
 
-        int temps = (((gear + controle) - brake) +
-                ((suspension + virage) * strat) +
-                ((motor + adapt + reac) * strat)) * pneuValeur;
+        // Calcul du score total
+        int scoreTotal = scoreGear + scoreControle + scoreBrake + scoreSuspension +
+                scoreVirage + scoreMotor + scoreAdapt + scoreReac +
+                scoreStrat + pneuValeur;
 
-        return temps;
+        // Conversion du score en position (1 à 20)
+        int position = 21 - (scoreTotal / 50);
+        position = Math.max(1, Math.min(position, 20));
+
+        return position;
     }
 }

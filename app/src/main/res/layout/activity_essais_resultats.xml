@@ -214,12 +214,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="52dp"
         android:layout_marginBottom="56dp"
-        android:text="Temps"
+        android:text="Position"
         app:layout_constraintBottom_toTopOf="@+id/textViewBoite"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/textViewActualTime"
+        android:id="@+id/textViewActualPosition"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="164dp"

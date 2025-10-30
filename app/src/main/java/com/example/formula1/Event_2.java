@@ -72,6 +72,7 @@ public class Event_2 extends AppCompatActivity {
             int voitureId = data.voitureAvecPiece.voiture.getId();
 
             db.voitureDAO().updateCarburantById(voitureId, 100);
+            db.piloteDAO().updatePositionById(piloteId, data.pilote.getPosition()+1);
 
             runOnUiThread(()->{
                 Intent intent = new Intent(Event_2.this, Podium.class);
@@ -88,10 +89,11 @@ public class Event_2 extends AppCompatActivity {
             int voitureId = data.voitureAvecPiece.voiture.getId();
             int carburant = data.voitureAvecPiece.voiture.getCarburant();
 
-            db.voitureDAO().updateCarburantById(voitureId, carburant-100);
+            db.piloteDAO().updatePositionById(piloteId, data.pilote.getPosition()-3);
+            db.voitureDAO().updateCarburantById(voitureId, carburant-25);
 
             runOnUiThread(()->{
-                Intent intent = new Intent(Event_2.this, Podium.class);
+                Intent intent = new Intent(Event_2.this, Event_3.class);
                 intent.putExtra("piloteId", piloteId);
                 startActivity(intent);
             });

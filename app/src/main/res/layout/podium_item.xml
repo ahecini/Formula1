@@ -7,7 +7,7 @@
     android:padding="16dp">
 
     <TextView
-        android:id="@+id/textViewActualTime"
+        android:id="@+id/textViewActualPosition"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20sp"
@@ -23,22 +23,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewActualTime"
-        app:layout_constraintStart_toEndOf="@+id/textViewActualTime"
-        app:layout_constraintTop_toTopOf="@+id/textViewActualTime"
-        app:layout_constraintEnd_toStartOf="@id/textViewPiloteTime"
-        android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewActualPosition"
+        app:layout_constraintStart_toEndOf="@+id/textViewActualPosition"
+        app:layout_constraintTop_toTopOf="@+id/textViewActualPosition"
         tools:text="Player One" />
-
-    <TextView
-        android:id="@+id/textViewPiloteTime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:textStyle="italic"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="1:25.432" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

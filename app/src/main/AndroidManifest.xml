@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Formula1">
         <activity
+            android:name=".Event_3"
+            android:exported="false" />
+        <activity
             android:name=".Podium"
             android:exported="false" />
         <activity

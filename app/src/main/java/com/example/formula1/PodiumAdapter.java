@@ -9,7 +9,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
-import java.util.Locale;
 
 public class PodiumAdapter extends RecyclerView.Adapter<PodiumAdapter.PodiumViewHolder> {
 
@@ -30,7 +29,7 @@ public class PodiumAdapter extends RecyclerView.Adapter<PodiumAdapter.PodiumView
     @Override
     public void onBindViewHolder(@NonNull PodiumViewHolder holder, int position) {
         Pilote pilote = pilotes.get(position);
-        holder.bind(pilote, position + 1);
+        holder.bind(pilote);
     }
 
     @Override
@@ -41,27 +40,16 @@ public class PodiumAdapter extends RecyclerView.Adapter<PodiumAdapter.PodiumView
     public static class PodiumViewHolder extends RecyclerView.ViewHolder {
         private final TextView textViewPosition;
         private final TextView textViewPiloteName;
-        private final TextView textViewPiloteTime;
 
         public PodiumViewHolder(@NonNull View itemView) {
             super(itemView);
-            textViewPosition = itemView.findViewById(R.id.textViewActualTime);
+            textViewPosition = itemView.findViewById(R.id.textViewActualPosition);
             textViewPiloteName = itemView.findViewById(R.id.textViewPiloteName);
-            textViewPiloteTime = itemView.findViewById(R.id.textViewPiloteTime);
         }
 
-        public void bind(Pilote pilote, int position) {
-            textViewPosition.setText(String.valueOf(position));
+        public void bind(Pilote pilote) {
+            textViewPosition.setText(String.valueOf(pilote.getPosition()));
             textViewPiloteName.setText(pilote.getNom());
-
-            textViewPiloteTime.setText(formatTime(pilote.getTemps()));
-        }
-
-        private String formatTime(long millis) {
-            long minutes = (millis / 1000) / 60;
-            long seconds = (millis / 1000) % 60;
-            long milliseconds = millis % 1000;
-            return String.format(Locale.getDefault(), "%02d:%02d.%03d", minutes, seconds, milliseconds);
         }
     }
 }

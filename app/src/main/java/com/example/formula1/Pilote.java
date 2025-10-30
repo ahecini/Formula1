@@ -37,8 +37,8 @@ public class Pilote {
     @ColumnInfo(name = "reactivite")
     private int reactivite;
 
-    @ColumnInfo(name = "temps")
-    private int temps;
+    @ColumnInfo(name = "position")
+    private int position;
 
     public Pilote(String nom,
                   int virage,
@@ -52,7 +52,7 @@ public class Pilote {
         this.adaptabilite = adaptabilite;
         this.controle = controle;
         this.reactivite = reactivite;
-        this.temps = 0;
+        this.position = 10;
     }
 
     public int getId() {
@@ -111,11 +111,11 @@ public class Pilote {
         this.reactivite = reactivite;
     }
 
-    public int getTemps() {
-        return temps;
+    public int getPosition() {
+        return position;
     }
 
-    public void setTemps(int temps) {
-        this.temps = temps;
+    public void setPosition(int position) {
+        this.position = position;
     }
 }

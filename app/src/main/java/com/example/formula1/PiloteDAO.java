@@ -21,8 +21,8 @@ public interface PiloteDAO {
     @Query("SELECT * FROM pilote WHERE id = :id")
     Pilote getPiloteById(int id);
 
-    @Query("UPDATE Pilote SET temps = :temps WHERE id = :id")
-    void updateTempsById(int id, int temps);
+    @Query("UPDATE Pilote SET position = :position WHERE id = :id")
+    void updatePositionById(int id, int position);
 
     @Query("UPDATE Pilote SET voitureId = :voitureId WHERE id = :id")
     void updateVoitureIdById(int id, int voitureId);

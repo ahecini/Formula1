@@ -1,6 +1,5 @@
 package com.example.formula1;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,14 +12,12 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import java.util.Locale;
 import java.util.Random;
 import java.util.concurrent.Executors;
 
 public class EssaisResultats extends AppCompatActivity {
 
-    private TextView textViewTemps;
-    private TextView actualTime;
+    private TextView actualPosition;
 
     private TextView textViewMotorAttribut;
     private TextView textViewGearAttribut;
@@ -48,7 +45,7 @@ public class EssaisResultats extends AppCompatActivity {
             return;
         }
 
-        actualTime = findViewById(R.id.textViewActualTime);
+        actualPosition = findViewById(R.id.textViewActualPosition);
 
         textViewBrakeAttribut = findViewById(R.id.textViewBrakeAttribut);
         textViewGearAttribut = findViewById(R.id.textViewGearAttribut);
@@ -78,11 +75,7 @@ public class EssaisResultats extends AppCompatActivity {
 
     public void validate (View view){
         Intent intent = new Intent(this, Event_1.class);
-
-        generatePilot();
-
         intent.putExtra("PiloteId", piloteId);
-
         startActivity(intent);
     }
 
@@ -99,7 +92,7 @@ public class EssaisResultats extends AppCompatActivity {
             }
 
             runOnUiThread(() -> {
-                actualTime.setText(formatTime(data.pilote.getTemps()));
+                actualPosition.setText(String.valueOf(data.pilote.getPosition()));
 
                 textViewBrakeAttribut.setText(String.valueOf(voitureAvecPiece.frein.getValeur()));
                 textViewGearAttribut.setText(String.valueOf(voitureAvecPiece.boite.getValeur()));
@@ -110,47 +103,5 @@ public class EssaisResultats extends AppCompatActivity {
                 textViewActualFuel.setText(voitureAvecPiece.voiture.getCarburant() + " %");
             });
         });
-    }
-
-    private void generatePilot(){
-        Executors.newSingleThreadExecutor().execute(() -> {
-            AppDataBase db = AppDataBase.getInstance(getApplicationContext());
-            for (int i = 0; i < 20 ; i++) {
-                Pilote pilote = new Pilote(name[i], variation(), variation(), variation(), variation());
-
-                long piloteId = db.piloteDAO().insert(pilote);
-
-                db.piloteDAO().updateTempsById((int)piloteId, randomTemps());
-            }
-        });
-    }
-
-    private int variation (){
-        int value;
-        Random random = new Random();
-
-        value = random.nextInt(5);
-
-        if(value == 0){
-            value = 1;
-        }
-
-        return value;
-    }
-
-    private int randomTemps(){
-        int value;
-        Random random = new Random();
-
-        value = random.nextInt(180000);
-
-        return value;
-    }
-
-    private String formatTime(int millis) {
-        int minutes = (millis / 1000) / 60;
-        int seconds = (millis / 1000) % 60;
-        int milliseconds = millis % 1000;
-        return String.format(Locale.getDefault(), "%02d:%02d.%03d", minutes, seconds, milliseconds);
     }
 }

@@ -53,13 +53,12 @@ public class Event_1 extends AppCompatActivity {
             AppDataBase db = AppDataBase.getInstance(getApplicationContext());
             PiloteEtVoiture data = db.piloteDAO().getPiloteAvecVoitureById(piloteId);
             int voitureId = data.voitureAvecPiece.voiture.getId();
-            int temps = data.pilote.getTemps();
+            int position = data.pilote.getPosition();
             int carburant = data.voitureAvecPiece.voiture.getCarburant();
 
             db.voitureDAO().updatePneuById(voitureId, tireType[3]);
-            db.piloteDAO().updateTempsById(piloteId, temps+3000+60000);
             db.voitureDAO().updateCarburantById(voitureId, 100);
-
+            db.piloteDAO().updatePositionById(piloteId, position-3);
 
             runOnUiThread(()->{
                Intent intent = new Intent(Event_1.this, Event_2.class);
@@ -74,10 +73,10 @@ public class Event_1 extends AppCompatActivity {
             AppDataBase db = AppDataBase.getInstance(getApplicationContext());
             PiloteEtVoiture data = db.piloteDAO().getPiloteAvecVoitureById(piloteId);
             int voitureId = data.voitureAvecPiece.voiture.getId();
-            int temps = data.pilote.getTemps();
+            int position = data.pilote.getPosition();
             int carburant = data.voitureAvecPiece.voiture.getCarburant();
 
-            db.piloteDAO().updateTempsById(piloteId, temps+60000);
+            db.piloteDAO().updatePositionById(piloteId, position-1);
             db.voitureDAO().updateCarburantById(voitureId, carburant-25);
 
             runOnUiThread(()->{
