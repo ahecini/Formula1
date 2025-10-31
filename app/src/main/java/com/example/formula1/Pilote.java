@@ -40,6 +40,13 @@ public class Pilote {
     @ColumnInfo(name = "position")
     private int position;
 
+    @ColumnInfo(name = "strategie")
+    private String strategie;
+
+    @ColumnInfo(name = "consommation")
+    private String consommation;
+
+
     public Pilote(String nom,
                   int virage,
                   int adaptabilite,
@@ -117,5 +124,21 @@ public class Pilote {
 
     public void setPosition(int position) {
         this.position = position;
+    }
+
+    public String getStrategie() {
+        return strategie;
+    }
+
+    public void setStrategie(String strategie) {
+        this.strategie = strategie;
+    }
+
+    public String getConsommation() {
+        return consommation;
+    }
+
+    public void setConsommation(String consommation) {
+        this.consommation = consommation;
     }
 }

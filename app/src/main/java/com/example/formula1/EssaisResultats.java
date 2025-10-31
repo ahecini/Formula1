@@ -101,6 +101,9 @@ public class EssaisResultats extends AppCompatActivity {
 
                 textViewActualTires.setText(voitureAvecPiece.voiture.getPneu());
                 textViewActualFuel.setText(voitureAvecPiece.voiture.getCarburant() + " %");
+
+                textViewStratChoice.setText(data.pilote.getStrategie());
+                textViewConsoChoice.setText(data.pilote.getConsommation());
             });
         });
     }

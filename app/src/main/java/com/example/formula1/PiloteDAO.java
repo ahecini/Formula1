@@ -27,6 +27,12 @@ public interface PiloteDAO {
     @Query("UPDATE Pilote SET voitureId = :voitureId WHERE id = :id")
     void updateVoitureIdById(int id, int voitureId);
 
+    @Query("UPDATE Pilote SET strategie = :strategie WHERE id = :id")
+    void updateStrategieById(int id, String strategie);
+
+    @Query("UPDATE Pilote SET consommation = :consommation WHERE id = :id")
+    void updateConsommationById(int id, String consommation);
+
     @Query("SELECT * FROM pilote ORDER BY nom ASC")
     List<Pilote> getAllPilotes();
 

@@ -39,11 +39,15 @@
     <string name="Rain_text">
         The sky suddenly darkens, and the first drops begin to fall on the scorching asphalt. The
         drivers, focused, feel the wind change. The track, still dry, will soon become a slippery
-        and unpredictable terrain. The engineers bustle in the pits: 'Rain tires, or do we keep the
-        current ones?'
+        and unpredictable terrain. The engineers bustle in the pits: \'Rain tires, or do we keep the
+        current ones?\'
     </string>
     <string name="Crash_text">
-        "A violent collision has just erupted in the first turn! Debris scatters across the track, and the marshals are already waving the yellow flags. The race is neutralized: the safety car enters the track. The drivers slow down, and the pits come alive. This is the perfect moment for a strategic pit stop: change the tires, adjust the aerodynamics, or refuel without losing position."
+        A violent collision has just erupted in the first turn! Debris scatters across the track,
+        and the marshals are already waving the yellow flags. The race is neutralized: the safety
+        car enters the track. The drivers slow down, and the pits come alive. This is the perfect
+        moment for a strategic pit stop: change the tires, adjust the aerodynamics, or refuel
+        without losing position.
     </string>
     <string name="Overcome_text">
         Your rival ahead of you shows a slight sign of weakness: they drift wide on the turn,

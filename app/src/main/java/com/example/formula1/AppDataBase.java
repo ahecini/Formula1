@@ -9,7 +9,7 @@ import java.util.concurrent.Executors;
 
 @Database(
         entities = {Voiture.class, Moteur.class, Frein.class, Boite.class, Suspension.class, Pilote.class},
-        version = 3,
+        version = 4,
         exportSchema = false
 )
 public abstract class AppDataBase extends RoomDatabase {

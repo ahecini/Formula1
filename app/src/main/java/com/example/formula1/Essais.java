@@ -166,6 +166,7 @@ public class Essais extends AppCompatActivity {
         int carburant = Integer.parseInt(fuelStrat[seekBarFuel.getProgress()]);
         String pneu = tireType[seekBarTire.getProgress()];
 
+        majPilote();
         majVoiture(carburant, pneu);
     }
 
@@ -195,6 +196,15 @@ public class Essais extends AppCompatActivity {
                 intent.putExtra("piloteId", piloteId);
                 startActivity(intent);
             });
+        });
+    }
+
+    private void majPilote(){
+        Executors.newSingleThreadExecutor().execute(() -> {
+            AppDataBase db = AppDataBase.getInstance(getApplicationContext());
+
+            db.piloteDAO().updateStrategieById(piloteId, textViewChoseStrat.getText().toString());
+            db.piloteDAO().updateConsommationById(piloteId, textViewChoseConso.getText().toString());
         });
     }
 
